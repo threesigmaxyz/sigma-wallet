@@ -85,7 +85,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item "><a href="index.html">Home</a></li><li class="chapter-item affix "><li class="part-title">src</li><li class="chapter-item "><a href="src/providers/index.html">❱ providers</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="src/providers/interfaces/index.html">❱ interfaces</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="src/providers/interfaces/IProvider.sol/interface.IProvider.html">IProvider</a></li><li class="chapter-item "><a href="src/providers/interfaces/IProviderManager.sol/interface.IProviderManager.html">IProviderManager</a></li></ol></li><li class="chapter-item "><a href="src/providers/oracles/index.html">❱ oracles</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="src/providers/oracles/ChainlinkOracle.sol/contract.ChaunlinkOracle.html">ChaunlinkOracle</a></li></ol></li><li class="chapter-item "><a href="src/providers/GoogleProvider.sol/abstract.GoogleProvider.html">GoogleProvider</a></li><li class="chapter-item "><a href="src/providers/ProviderManager.sol/contract.ProviderManager.html">ProviderManager</a></li></ol></li><li class="chapter-item "><a href="src/WalletExample.sol/contract.Wallet.html">Wallet</a></li></ol>
+                <ol class="chapter"><li class="chapter-item "><a href="index.html">Home</a></li><li class="chapter-item affix "><li class="part-title">src</li><li class="chapter-item "><a href="src/dependencies/index.html">❱ dependencies</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="src/dependencies/JsmnSolLib.sol/library.JsmnSolLib.html">JsmnSolLib</a></li></ol></li><li class="chapter-item "><a href="src/providers/index.html">❱ providers</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="src/providers/interfaces/index.html">❱ interfaces</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="src/providers/interfaces/IProvider.sol/interface.IProvider.html">IProvider</a></li><li class="chapter-item "><a href="src/providers/interfaces/IProviderManager.sol/interface.IProviderManager.html">IProviderManager</a></li></ol></li><li class="chapter-item "><a href="src/providers/oracles/index.html">❱ oracles</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="src/providers/oracles/interfaces/index.html">❱ interfaces</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="src/providers/oracles/interfaces/IOracle.sol/interface.IOracle.html">IOracle</a></li><li class="chapter-item "><a href="src/providers/oracles/interfaces/IOracleMessageReceiver.sol/interface.IOracleMessageReceiver.html">IOracleMessageReceiver</a></li></ol></li><li class="chapter-item "><a href="src/providers/oracles/ChainlinkOracle.sol/contract.ChaunlinkOracle.html">ChaunlinkOracle</a></li></ol></li><li class="chapter-item "><a href="src/providers/GoogleProvider.sol/contract.GoogleProvider.html">GoogleProvider</a></li><li class="chapter-item "><a href="src/providers/ProviderManager.sol/contract.ProviderManager.html">ProviderManager</a></li></ol></li><li class="chapter-item "><a href="src/WalletExample.sol/contract.Wallet.html">Wallet</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -278,26 +278,135 @@ tools on top of.</p>
 </p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="contents"><a class="header" href="#contents">Contents</a></h1>
 <ul>
+<li><a href="src/dependencies/JsmnSolLib.sol/library.JsmnSolLib.html">JsmnSolLib</a></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="jsmnsollib"><a class="header" href="#jsmnsollib">JsmnSolLib</a></h1>
+<p><a href="https://github.com/threesigmaxyz/sigma-wallet/blob/afb585a44f65dc580e0d59e3ca80e1795c20893e/src/dependencies/JsmnSolLib.sol">Git Source</a></p>
+<h2 id="state-variables"><a class="header" href="#state-variables">State Variables</a></h2>
+<h3 id="return_success"><a class="header" href="#return_success">RETURN_SUCCESS</a></h3>
+<pre><code class="language-solidity">uint256 constant RETURN_SUCCESS = 0;
+</code></pre>
+<h3 id="return_error_invalid_json"><a class="header" href="#return_error_invalid_json">RETURN_ERROR_INVALID_JSON</a></h3>
+<pre><code class="language-solidity">uint256 constant RETURN_ERROR_INVALID_JSON = 1;
+</code></pre>
+<h3 id="return_error_part"><a class="header" href="#return_error_part">RETURN_ERROR_PART</a></h3>
+<pre><code class="language-solidity">uint256 constant RETURN_ERROR_PART = 2;
+</code></pre>
+<h3 id="return_error_no_mem"><a class="header" href="#return_error_no_mem">RETURN_ERROR_NO_MEM</a></h3>
+<pre><code class="language-solidity">uint256 constant RETURN_ERROR_NO_MEM = 3;
+</code></pre>
+<h2 id="functions"><a class="header" href="#functions">Functions</a></h2>
+<h3 id="init"><a class="header" href="#init">init</a></h3>
+<pre><code class="language-solidity">function init(uint256 length) internal pure returns (Parser memory, Token[] memory);
+</code></pre>
+<h3 id="allocatetoken"><a class="header" href="#allocatetoken">allocateToken</a></h3>
+<pre><code class="language-solidity">function allocateToken(Parser memory parser, Token[] memory tokens) internal pure returns (bool, Token memory);
+</code></pre>
+<h3 id="filltoken"><a class="header" href="#filltoken">fillToken</a></h3>
+<pre><code class="language-solidity">function fillToken(Token memory token, JsmnType jsmnType, uint256 start, uint256 end) internal pure;
+</code></pre>
+<h3 id="parsestring"><a class="header" href="#parsestring">parseString</a></h3>
+<pre><code class="language-solidity">function parseString(Parser memory parser, Token[] memory tokens, bytes memory s) internal pure returns (uint256);
+</code></pre>
+<h3 id="parseprimitive"><a class="header" href="#parseprimitive">parsePrimitive</a></h3>
+<pre><code class="language-solidity">function parsePrimitive(Parser memory parser, Token[] memory tokens, bytes memory s) internal pure returns (uint256);
+</code></pre>
+<h3 id="parse"><a class="header" href="#parse">parse</a></h3>
+<pre><code class="language-solidity">function parse(string memory json, uint256 numberElements)
+    internal
+    pure
+    returns (uint256, Token[] memory tokens, uint256);
+</code></pre>
+<h3 id="getbytes"><a class="header" href="#getbytes">getBytes</a></h3>
+<pre><code class="language-solidity">function getBytes(string memory json, uint256 start, uint256 end) internal pure returns (string memory);
+</code></pre>
+<h3 id="parseint"><a class="header" href="#parseint">parseInt</a></h3>
+<pre><code class="language-solidity">function parseInt(string memory _a) internal pure returns (int256);
+</code></pre>
+<h3 id="parseint-1"><a class="header" href="#parseint-1">parseInt</a></h3>
+<pre><code class="language-solidity">function parseInt(string memory _a, uint256 _b) internal pure returns (int256);
+</code></pre>
+<h3 id="uint2str"><a class="header" href="#uint2str">uint2str</a></h3>
+<pre><code class="language-solidity">function uint2str(uint256 i) internal pure returns (string memory);
+</code></pre>
+<h3 id="parsebool"><a class="header" href="#parsebool">parseBool</a></h3>
+<pre><code class="language-solidity">function parseBool(string memory _a) internal pure returns (bool);
+</code></pre>
+<h3 id="strcompare"><a class="header" href="#strcompare">strCompare</a></h3>
+<pre><code class="language-solidity">function strCompare(string memory _a, string memory _b) internal pure returns (int256);
+</code></pre>
+<h2 id="structs"><a class="header" href="#structs">Structs</a></h2>
+<h3 id="token"><a class="header" href="#token">Token</a></h3>
+<pre><code class="language-solidity">struct Token {
+    JsmnType jsmnType;
+    uint256 start;
+    bool startSet;
+    uint256 end;
+    bool endSet;
+    uint8 size;
+}
+</code></pre>
+<h3 id="parser"><a class="header" href="#parser">Parser</a></h3>
+<pre><code class="language-solidity">struct Parser {
+    uint256 pos;
+    uint256 toknext;
+    int256 toksuper;
+}
+</code></pre>
+<h2 id="enums"><a class="header" href="#enums">Enums</a></h2>
+<h3 id="jsmntype"><a class="header" href="#jsmntype">JsmnType</a></h3>
+<pre><code class="language-solidity">enum JsmnType {
+    UNDEFINED,
+    OBJECT,
+    ARRAY,
+    STRING,
+    PRIMITIVE
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="contents-1"><a class="header" href="#contents-1">Contents</a></h1>
+<ul>
 <li><a href="src/providers//src/providers/interfaces">interfaces</a></li>
 <li><a href="src/providers//src/providers/oracles">oracles</a></li>
-<li><a href="src/providers/GoogleProvider.sol/abstract.GoogleProvider.html">GoogleProvider</a></li>
+<li><a href="src/providers/GoogleProvider.sol/contract.GoogleProvider.html">GoogleProvider</a></li>
 <li><a href="src/providers/ProviderManager.sol/contract.ProviderManager.html">ProviderManager</a></li>
 </ul>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="contents-1"><a class="header" href="#contents-1">Contents</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="contents-2"><a class="header" href="#contents-2">Contents</a></h1>
 <ul>
 <li><a href="src/providers/interfaces/IProvider.sol/interface.IProvider.html">IProvider</a></li>
 <li><a href="src/providers/interfaces/IProviderManager.sol/interface.IProviderManager.html">IProviderManager</a></li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="iprovider"><a class="header" href="#iprovider">IProvider</a></h1>
-<p><a href="https://github.com/threesigmaxyz/sigma-wallet/blob/1497e83d6083438bba1e1fe60c46e6bd68340622/src/providers/interfaces/IProvider.sol">Git Source</a></p>
-<h2 id="functions"><a class="header" href="#functions">Functions</a></h2>
+<p><a href="https://github.com/threesigmaxyz/sigma-wallet/blob/afb585a44f65dc580e0d59e3ca80e1795c20893e/src/providers/interfaces/IProvider.sol">Git Source</a></p>
+<h2 id="functions-1"><a class="header" href="#functions-1">Functions</a></h2>
+<h3 id="verifytoken"><a class="header" href="#verifytoken">verifyToken</a></h3>
+<pre><code class="language-solidity">function verifyToken(bytes memory token_) external view returns (bool);
+</code></pre>
+<h3 id="requestpublickeysupdate"><a class="header" href="#requestpublickeysupdate">requestPublicKeysUpdate</a></h3>
+<pre><code class="language-solidity">function requestPublicKeysUpdate() external;
+</code></pre>
 <h3 id="name"><a class="header" href="#name">name</a></h3>
 <pre><code class="language-solidity">function name() external view returns (string memory);
 </code></pre>
 <h3 id="publickeys"><a class="header" href="#publickeys">publicKeys</a></h3>
 <pre><code class="language-solidity">function publicKeys() external view returns (PublicKey[] memory);
 </code></pre>
-<h2 id="structs"><a class="header" href="#structs">Structs</a></h2>
+<h3 id="forceupdatepublickeys"><a class="header" href="#forceupdatepublickeys">forceUpdatePublicKeys</a></h3>
+<pre><code class="language-solidity">function forceUpdatePublicKeys(bytes memory publicKeys_) external;
+</code></pre>
+<h2 id="errors"><a class="header" href="#errors">Errors</a></h2>
+<h3 id="onlyprovidermanager"><a class="header" href="#onlyprovidermanager">OnlyProviderManager</a></h3>
+<pre><code class="language-solidity">error OnlyProviderManager(address);
+</code></pre>
+<h3 id="nooracleerror"><a class="header" href="#nooracleerror">NoOracleError</a></h3>
+<pre><code class="language-solidity">error NoOracleError();
+</code></pre>
+<h3 id="onlyoracle"><a class="header" href="#onlyoracle">OnlyOracle</a></h3>
+<pre><code class="language-solidity">error OnlyOracle(address);
+</code></pre>
+<h3 id="invalidtokenerror"><a class="header" href="#invalidtokenerror">InvalidTokenError</a></h3>
+<pre><code class="language-solidity">error InvalidTokenError(bytes);
+</code></pre>
+<h2 id="structs-1"><a class="header" href="#structs-1">Structs</a></h2>
 <h3 id="publickey"><a class="header" href="#publickey">PublicKey</a></h3>
 <pre><code class="language-solidity">struct PublicKey {
     string kuid;
@@ -305,8 +414,43 @@ tools on top of.</p>
 }
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="iprovidermanager"><a class="header" href="#iprovidermanager">IProviderManager</a></h1>
-<p><a href="https://github.com/threesigmaxyz/sigma-wallet/blob/1497e83d6083438bba1e1fe60c46e6bd68340622/src/providers/interfaces/IProviderManager.sol">Git Source</a></p>
-<h2 id="structs-1"><a class="header" href="#structs-1">Structs</a></h2>
+<p><a href="https://github.com/threesigmaxyz/sigma-wallet/blob/afb585a44f65dc580e0d59e3ca80e1795c20893e/src/providers/interfaces/IProviderManager.sol">Git Source</a></p>
+<h2 id="functions-2"><a class="header" href="#functions-2">Functions</a></h2>
+<h3 id="verifytoken-1"><a class="header" href="#verifytoken-1">verifyToken</a></h3>
+<pre><code class="language-solidity">function verifyToken(string memory providerName_, bytes memory token_) external view returns (bool);
+</code></pre>
+<h3 id="updateproviderpublickeys"><a class="header" href="#updateproviderpublickeys">updateProviderPublicKeys</a></h3>
+<pre><code class="language-solidity">function updateProviderPublicKeys(string memory providerName_) external;
+</code></pre>
+<h3 id="addprovider"><a class="header" href="#addprovider">addProvider</a></h3>
+<pre><code class="language-solidity">function addProvider(bytes memory providerBytecode_) external;
+</code></pre>
+<h3 id="updateprovider"><a class="header" href="#updateprovider">updateProvider</a></h3>
+<pre><code class="language-solidity">function updateProvider(bytes memory providerBytecode_, uint256 providerIndex_) external;
+</code></pre>
+<h3 id="getproviders"><a class="header" href="#getproviders">getProviders</a></h3>
+<pre><code class="language-solidity">function getProviders() external view returns (Provider[] memory providers_);
+</code></pre>
+<h3 id="forceupdateproviderpublickeys"><a class="header" href="#forceupdateproviderpublickeys">forceUpdateProviderPublicKeys</a></h3>
+<pre><code class="language-solidity">function forceUpdateProviderPublicKeys(string memory providerName_, bytes memory publicKeys_) external;
+</code></pre>
+<h2 id="errors-1"><a class="header" href="#errors-1">Errors</a></h2>
+<h3 id="onlygovernanceerror"><a class="header" href="#onlygovernanceerror">OnlyGovernanceError</a></h3>
+<pre><code class="language-solidity">error OnlyGovernanceError(address);
+</code></pre>
+<h3 id="provideralreadyexistserror"><a class="header" href="#provideralreadyexistserror">ProviderAlreadyExistsError</a></h3>
+<pre><code class="language-solidity">error ProviderAlreadyExistsError(string providerName);
+</code></pre>
+<h3 id="providerdoesnotexisterror"><a class="header" href="#providerdoesnotexisterror">ProviderDoesNotExistError</a></h3>
+<pre><code class="language-solidity">error ProviderDoesNotExistError(string providerName);
+</code></pre>
+<h3 id="wrongproviderindexerror"><a class="header" href="#wrongproviderindexerror">WrongProviderIndexError</a></h3>
+<pre><code class="language-solidity">error WrongProviderIndexError(uint256 index);
+</code></pre>
+<h3 id="providernotfounderror"><a class="header" href="#providernotfounderror">ProviderNotFoundError</a></h3>
+<pre><code class="language-solidity">error ProviderNotFoundError(string providerName);
+</code></pre>
+<h2 id="structs-2"><a class="header" href="#structs-2">Structs</a></h2>
 <h3 id="provider"><a class="header" href="#provider">Provider</a></h3>
 <pre><code class="language-solidity">struct Provider {
     string name;
@@ -314,34 +458,130 @@ tools on top of.</p>
     IProvider.PublicKey[] publicKeys;
 }
 </code></pre>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="contents-2"><a class="header" href="#contents-2">Contents</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="contents-3"><a class="header" href="#contents-3">Contents</a></h1>
 <ul>
+<li><a href="src/providers/oracles//src/providers/oracles/interfaces">interfaces</a></li>
 <li><a href="src/providers/oracles/ChainlinkOracle.sol/contract.ChaunlinkOracle.html">ChaunlinkOracle</a></li>
 </ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="contents-4"><a class="header" href="#contents-4">Contents</a></h1>
+<ul>
+<li><a href="src/providers/oracles/interfaces/IOracle.sol/interface.IOracle.html">IOracle</a></li>
+<li><a href="src/providers/oracles/interfaces/IOracleMessageReceiver.sol/interface.IOracleMessageReceiver.html">IOracleMessageReceiver</a></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="ioracle"><a class="header" href="#ioracle">IOracle</a></h1>
+<p><a href="https://github.com/threesigmaxyz/sigma-wallet/blob/afb585a44f65dc580e0d59e3ca80e1795c20893e/src/providers/oracles/interfaces/IOracle.sol">Git Source</a></p>
+<h2 id="functions-3"><a class="header" href="#functions-3">Functions</a></h2>
+<h3 id="requestdata"><a class="header" href="#requestdata">requestData</a></h3>
+<pre><code class="language-solidity">function requestData(string memory url_) external returns (bytes32 requestId);
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="ioraclemessagereceiver"><a class="header" href="#ioraclemessagereceiver">IOracleMessageReceiver</a></h1>
+<p><a href="https://github.com/threesigmaxyz/sigma-wallet/blob/afb585a44f65dc580e0d59e3ca80e1795c20893e/src/providers/oracles/interfaces/IOracleMessageReceiver.sol">Git Source</a></p>
+<h2 id="functions-4"><a class="header" href="#functions-4">Functions</a></h2>
+<h3 id="handleoraclemessage"><a class="header" href="#handleoraclemessage">handleOracleMessage</a></h3>
+<pre><code class="language-solidity">function handleOracleMessage(string memory message) external;
+</code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="chaunlinkoracle"><a class="header" href="#chaunlinkoracle">ChaunlinkOracle</a></h1>
-<p><a href="https://github.com/threesigmaxyz/sigma-wallet/blob/1497e83d6083438bba1e1fe60c46e6bd68340622/src/providers/oracles/ChainlinkOracle.sol">Git Source</a></p>
-<h2 id="functions-1"><a class="header" href="#functions-1">Functions</a></h2>
+<p><a href="https://github.com/threesigmaxyz/sigma-wallet/blob/afb585a44f65dc580e0d59e3ca80e1795c20893e/src/providers/oracles/ChainlinkOracle.sol">Git Source</a></p>
+<h2 id="functions-5"><a class="header" href="#functions-5">Functions</a></h2>
 <h3 id="constructor"><a class="header" href="#constructor">constructor</a></h3>
 <pre><code class="language-solidity">constructor();
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="googleprovider"><a class="header" href="#googleprovider">GoogleProvider</a></h1>
-<p><a href="https://github.com/threesigmaxyz/sigma-wallet/blob/1497e83d6083438bba1e1fe60c46e6bd68340622/src/providers/GoogleProvider.sol">Git Source</a></p>
+<p><a href="https://github.com/threesigmaxyz/sigma-wallet/blob/afb585a44f65dc580e0d59e3ca80e1795c20893e/src/providers/GoogleProvider.sol">Git Source</a></p>
 <p><strong>Inherits:</strong>
-<a href="src/providers/GoogleProvider.sol//src/providers/interfaces/IProvider.sol/interface.IProvider.html">IProvider</a></p>
-<h2 id="state-variables"><a class="header" href="#state-variables">State Variables</a></h2>
+<a href="src/providers/GoogleProvider.sol//src/providers/interfaces/IProvider.sol/interface.IProvider.html">IProvider</a>, <a href="src/providers/GoogleProvider.sol//src/providers/oracles/interfaces/IOracleMessageReceiver.sol/interface.IOracleMessageReceiver.html">IOracleMessageReceiver</a></p>
+<h2 id="state-variables-1"><a class="header" href="#state-variables-1">State Variables</a></h2>
 <h3 id="_name"><a class="header" href="#_name">_name</a></h3>
 <pre><code class="language-solidity">string internal constant _name = &quot;Google&quot;;
 </code></pre>
+<h3 id="_publickeysurl"><a class="header" href="#_publickeysurl">_publicKeysUrl</a></h3>
+<pre><code class="language-solidity">string internal constant _publicKeysUrl =
+    &quot;https://www.googleapis.com/robot/v1/metadata/x509/securetoken@system.gserviceaccount.com&quot;;
+</code></pre>
+<h3 id="_kuids"><a class="header" href="#_kuids">_kuids</a></h3>
+<pre><code class="language-solidity">string[] internal _kuids;
+</code></pre>
+<h3 id="_kuidtomodulushash"><a class="header" href="#_kuidtomodulushash">_kuidToModulusHash</a></h3>
+<pre><code class="language-solidity">mapping(string =&gt; bytes32) internal _kuidToModulusHash;
+</code></pre>
+<h3 id="_providermanager"><a class="header" href="#_providermanager">_providerManager</a></h3>
+<pre><code class="language-solidity">address internal immutable _providerManager;
+</code></pre>
+<h3 id="_oracle"><a class="header" href="#_oracle">_oracle</a></h3>
+<pre><code class="language-solidity">address internal immutable _oracle;
+</code></pre>
+<h2 id="functions-6"><a class="header" href="#functions-6">Functions</a></h2>
+<h3 id="onlyprovidermanager-1"><a class="header" href="#onlyprovidermanager-1">onlyProviderManager</a></h3>
+<pre><code class="language-solidity">modifier onlyProviderManager();
+</code></pre>
+<h3 id="onlyoracle-1"><a class="header" href="#onlyoracle-1">onlyOracle</a></h3>
+<pre><code class="language-solidity">modifier onlyOracle();
+</code></pre>
+<h3 id="constructor-1"><a class="header" href="#constructor-1">constructor</a></h3>
+<pre><code class="language-solidity">constructor(address oracle_);
+</code></pre>
+<h3 id="verifytoken-2"><a class="header" href="#verifytoken-2">verifyToken</a></h3>
+<pre><code class="language-solidity">function verifyToken(bytes memory token_) external view override returns (bool);
+</code></pre>
+<h3 id="requestpublickeysupdate-1"><a class="header" href="#requestpublickeysupdate-1">requestPublicKeysUpdate</a></h3>
+<pre><code class="language-solidity">function requestPublicKeysUpdate() external override;
+</code></pre>
+<h3 id="handleoraclemessage-1"><a class="header" href="#handleoraclemessage-1">handleOracleMessage</a></h3>
+<pre><code class="language-solidity">function handleOracleMessage(string memory response_) external override onlyOracle;
+</code></pre>
+<h3 id="name-1"><a class="header" href="#name-1">name</a></h3>
+<pre><code class="language-solidity">function name() external pure override returns (string memory);
+</code></pre>
+<h3 id="publickeys-1"><a class="header" href="#publickeys-1">publicKeys</a></h3>
+<pre><code class="language-solidity">function publicKeys() external view override returns (PublicKey[] memory publicKeys_);
+</code></pre>
+<h3 id="forceupdatepublickeys-1"><a class="header" href="#forceupdatepublickeys-1">forceUpdatePublicKeys</a></h3>
+<pre><code class="language-solidity">function forceUpdatePublicKeys(bytes memory publicKeys_) external override onlyProviderManager;
+</code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="providermanager"><a class="header" href="#providermanager">ProviderManager</a></h1>
-<p><a href="https://github.com/threesigmaxyz/sigma-wallet/blob/1497e83d6083438bba1e1fe60c46e6bd68340622/src/providers/ProviderManager.sol">Git Source</a></p>
+<p><a href="https://github.com/threesigmaxyz/sigma-wallet/blob/afb585a44f65dc580e0d59e3ca80e1795c20893e/src/providers/ProviderManager.sol">Git Source</a></p>
 <p><strong>Inherits:</strong>
 <a href="src/providers/ProviderManager.sol//src/providers/interfaces/IProviderManager.sol/interface.IProviderManager.html">IProviderManager</a></p>
-<h2 id="functions-2"><a class="header" href="#functions-2">Functions</a></h2>
-<h3 id="constructor-1"><a class="header" href="#constructor-1">constructor</a></h3>
+<h2 id="state-variables-2"><a class="header" href="#state-variables-2">State Variables</a></h2>
+<h3 id="_providers"><a class="header" href="#_providers">_providers</a></h3>
+<pre><code class="language-solidity">mapping(string =&gt; IProvider) internal _providers;
+</code></pre>
+<h3 id="_providerlist"><a class="header" href="#_providerlist">_providerList</a></h3>
+<pre><code class="language-solidity">IProvider[] internal _providerList;
+</code></pre>
+<h3 id="_governance"><a class="header" href="#_governance">_governance</a></h3>
+<pre><code class="language-solidity">address internal _governance;
+</code></pre>
+<h2 id="functions-7"><a class="header" href="#functions-7">Functions</a></h2>
+<h3 id="onlygovernance"><a class="header" href="#onlygovernance">onlyGovernance</a></h3>
+<pre><code class="language-solidity">modifier onlyGovernance();
+</code></pre>
+<h3 id="constructor-2"><a class="header" href="#constructor-2">constructor</a></h3>
 <pre><code class="language-solidity">constructor();
 </code></pre>
+<h3 id="verifytoken-3"><a class="header" href="#verifytoken-3">verifyToken</a></h3>
+<pre><code class="language-solidity">function verifyToken(string memory providerName_, bytes memory token_) external view override returns (bool);
+</code></pre>
+<h3 id="updateproviderpublickeys-1"><a class="header" href="#updateproviderpublickeys-1">updateProviderPublicKeys</a></h3>
+<pre><code class="language-solidity">function updateProviderPublicKeys(string memory providerName_) external override;
+</code></pre>
+<h3 id="addprovider-1"><a class="header" href="#addprovider-1">addProvider</a></h3>
+<pre><code class="language-solidity">function addProvider(bytes memory providerBytecode_) external override onlyGovernance;
+</code></pre>
+<h3 id="updateprovider-1"><a class="header" href="#updateprovider-1">updateProvider</a></h3>
+<pre><code class="language-solidity">function updateProvider(bytes memory providerBytecode_, uint256 providerIndex_) external override onlyGovernance;
+</code></pre>
+<h3 id="forceupdateproviderpublickeys-1"><a class="header" href="#forceupdateproviderpublickeys-1">forceUpdateProviderPublicKeys</a></h3>
+<pre><code class="language-solidity">function forceUpdateProviderPublicKeys(string memory name_, bytes memory keys_) external override onlyGovernance;
+</code></pre>
+<h3 id="getproviders-1"><a class="header" href="#getproviders-1">getProviders</a></h3>
+<pre><code class="language-solidity">function getProviders() external view override returns (Provider[] memory providers_);
+</code></pre>
+<h3 id="_addprovider"><a class="header" href="#_addprovider">_addProvider</a></h3>
+<pre><code class="language-solidity">function _addProvider(bytes memory bytecode_) internal returns (IProvider, string memory);
+</code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="wallet"><a class="header" href="#wallet">Wallet</a></h1>
-<p><a href="https://github.com/threesigmaxyz/sigma-wallet/blob/1497e83d6083438bba1e1fe60c46e6bd68340622/src/WalletExample.sol">Git Source</a></p>
+<p><a href="https://github.com/threesigmaxyz/sigma-wallet/blob/afb585a44f65dc580e0d59e3ca80e1795c20893e/src/WalletExample.sol">Git Source</a></p>
 
                     </main>
 

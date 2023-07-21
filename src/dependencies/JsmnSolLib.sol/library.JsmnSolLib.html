@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>❱ interfaces - Foundry Template</title>
+        <title>JsmnSolLib - Foundry Template</title>
 
 
         <!-- Custom HTML head -->
@@ -84,7 +84,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item "><a href="../../../index.html">Home</a></li><li class="chapter-item affix "><li class="part-title">src</li><li class="chapter-item "><a href="../../../src/dependencies/index.html">❱ dependencies</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../src/dependencies/JsmnSolLib.sol/library.JsmnSolLib.html">JsmnSolLib</a></li></ol></li><li class="chapter-item expanded "><a href="../../../src/providers/index.html">❱ providers</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../src/providers/interfaces/index.html" class="active">❱ interfaces</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../src/providers/interfaces/IProvider.sol/interface.IProvider.html">IProvider</a></li><li class="chapter-item "><a href="../../../src/providers/interfaces/IProviderManager.sol/interface.IProviderManager.html">IProviderManager</a></li></ol></li><li class="chapter-item "><a href="../../../src/providers/oracles/index.html">❱ oracles</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../src/providers/oracles/interfaces/index.html">❱ interfaces</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../src/providers/oracles/interfaces/IOracle.sol/interface.IOracle.html">IOracle</a></li><li class="chapter-item "><a href="../../../src/providers/oracles/interfaces/IOracleMessageReceiver.sol/interface.IOracleMessageReceiver.html">IOracleMessageReceiver</a></li></ol></li><li class="chapter-item "><a href="../../../src/providers/oracles/ChainlinkOracle.sol/contract.ChaunlinkOracle.html">ChaunlinkOracle</a></li></ol></li><li class="chapter-item "><a href="../../../src/providers/GoogleProvider.sol/contract.GoogleProvider.html">GoogleProvider</a></li><li class="chapter-item "><a href="../../../src/providers/ProviderManager.sol/contract.ProviderManager.html">ProviderManager</a></li></ol></li><li class="chapter-item "><a href="../../../src/WalletExample.sol/contract.Wallet.html">Wallet</a></li></ol>
+                <ol class="chapter"><li class="chapter-item "><a href="../../../index.html">Home</a></li><li class="chapter-item affix "><li class="part-title">src</li><li class="chapter-item expanded "><a href="../../../src/dependencies/index.html">❱ dependencies</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../src/dependencies/JsmnSolLib.sol/library.JsmnSolLib.html" class="active">JsmnSolLib</a></li></ol></li><li class="chapter-item "><a href="../../../src/providers/index.html">❱ providers</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../src/providers/interfaces/index.html">❱ interfaces</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../src/providers/interfaces/IProvider.sol/interface.IProvider.html">IProvider</a></li><li class="chapter-item "><a href="../../../src/providers/interfaces/IProviderManager.sol/interface.IProviderManager.html">IProviderManager</a></li></ol></li><li class="chapter-item "><a href="../../../src/providers/oracles/index.html">❱ oracles</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../src/providers/oracles/interfaces/index.html">❱ interfaces</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../src/providers/oracles/interfaces/IOracle.sol/interface.IOracle.html">IOracle</a></li><li class="chapter-item "><a href="../../../src/providers/oracles/interfaces/IOracleMessageReceiver.sol/interface.IOracleMessageReceiver.html">IOracleMessageReceiver</a></li></ol></li><li class="chapter-item "><a href="../../../src/providers/oracles/ChainlinkOracle.sol/contract.ChaunlinkOracle.html">ChaunlinkOracle</a></li></ol></li><li class="chapter-item "><a href="../../../src/providers/GoogleProvider.sol/contract.GoogleProvider.html">GoogleProvider</a></li><li class="chapter-item "><a href="../../../src/providers/ProviderManager.sol/contract.ProviderManager.html">ProviderManager</a></li></ol></li><li class="chapter-item "><a href="../../../src/WalletExample.sol/contract.Wallet.html">Wallet</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -170,21 +170,99 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="contents"><a class="header" href="#contents">Contents</a></h1>
-<ul>
-<li><a href="IProvider.sol/interface.IProvider.html">IProvider</a></li>
-<li><a href="IProviderManager.sol/interface.IProviderManager.html">IProviderManager</a></li>
-</ul>
+                        <h1 id="jsmnsollib"><a class="header" href="#jsmnsollib">JsmnSolLib</a></h1>
+<p><a href="https://github.com/threesigmaxyz/sigma-wallet/blob/afb585a44f65dc580e0d59e3ca80e1795c20893e/src/dependencies/JsmnSolLib.sol">Git Source</a></p>
+<h2 id="state-variables"><a class="header" href="#state-variables">State Variables</a></h2>
+<h3 id="return_success"><a class="header" href="#return_success">RETURN_SUCCESS</a></h3>
+<pre><code class="language-solidity">uint256 constant RETURN_SUCCESS = 0;
+</code></pre>
+<h3 id="return_error_invalid_json"><a class="header" href="#return_error_invalid_json">RETURN_ERROR_INVALID_JSON</a></h3>
+<pre><code class="language-solidity">uint256 constant RETURN_ERROR_INVALID_JSON = 1;
+</code></pre>
+<h3 id="return_error_part"><a class="header" href="#return_error_part">RETURN_ERROR_PART</a></h3>
+<pre><code class="language-solidity">uint256 constant RETURN_ERROR_PART = 2;
+</code></pre>
+<h3 id="return_error_no_mem"><a class="header" href="#return_error_no_mem">RETURN_ERROR_NO_MEM</a></h3>
+<pre><code class="language-solidity">uint256 constant RETURN_ERROR_NO_MEM = 3;
+</code></pre>
+<h2 id="functions"><a class="header" href="#functions">Functions</a></h2>
+<h3 id="init"><a class="header" href="#init">init</a></h3>
+<pre><code class="language-solidity">function init(uint256 length) internal pure returns (Parser memory, Token[] memory);
+</code></pre>
+<h3 id="allocatetoken"><a class="header" href="#allocatetoken">allocateToken</a></h3>
+<pre><code class="language-solidity">function allocateToken(Parser memory parser, Token[] memory tokens) internal pure returns (bool, Token memory);
+</code></pre>
+<h3 id="filltoken"><a class="header" href="#filltoken">fillToken</a></h3>
+<pre><code class="language-solidity">function fillToken(Token memory token, JsmnType jsmnType, uint256 start, uint256 end) internal pure;
+</code></pre>
+<h3 id="parsestring"><a class="header" href="#parsestring">parseString</a></h3>
+<pre><code class="language-solidity">function parseString(Parser memory parser, Token[] memory tokens, bytes memory s) internal pure returns (uint256);
+</code></pre>
+<h3 id="parseprimitive"><a class="header" href="#parseprimitive">parsePrimitive</a></h3>
+<pre><code class="language-solidity">function parsePrimitive(Parser memory parser, Token[] memory tokens, bytes memory s) internal pure returns (uint256);
+</code></pre>
+<h3 id="parse"><a class="header" href="#parse">parse</a></h3>
+<pre><code class="language-solidity">function parse(string memory json, uint256 numberElements)
+    internal
+    pure
+    returns (uint256, Token[] memory tokens, uint256);
+</code></pre>
+<h3 id="getbytes"><a class="header" href="#getbytes">getBytes</a></h3>
+<pre><code class="language-solidity">function getBytes(string memory json, uint256 start, uint256 end) internal pure returns (string memory);
+</code></pre>
+<h3 id="parseint"><a class="header" href="#parseint">parseInt</a></h3>
+<pre><code class="language-solidity">function parseInt(string memory _a) internal pure returns (int256);
+</code></pre>
+<h3 id="parseint-1"><a class="header" href="#parseint-1">parseInt</a></h3>
+<pre><code class="language-solidity">function parseInt(string memory _a, uint256 _b) internal pure returns (int256);
+</code></pre>
+<h3 id="uint2str"><a class="header" href="#uint2str">uint2str</a></h3>
+<pre><code class="language-solidity">function uint2str(uint256 i) internal pure returns (string memory);
+</code></pre>
+<h3 id="parsebool"><a class="header" href="#parsebool">parseBool</a></h3>
+<pre><code class="language-solidity">function parseBool(string memory _a) internal pure returns (bool);
+</code></pre>
+<h3 id="strcompare"><a class="header" href="#strcompare">strCompare</a></h3>
+<pre><code class="language-solidity">function strCompare(string memory _a, string memory _b) internal pure returns (int256);
+</code></pre>
+<h2 id="structs"><a class="header" href="#structs">Structs</a></h2>
+<h3 id="token"><a class="header" href="#token">Token</a></h3>
+<pre><code class="language-solidity">struct Token {
+    JsmnType jsmnType;
+    uint256 start;
+    bool startSet;
+    uint256 end;
+    bool endSet;
+    uint8 size;
+}
+</code></pre>
+<h3 id="parser"><a class="header" href="#parser">Parser</a></h3>
+<pre><code class="language-solidity">struct Parser {
+    uint256 pos;
+    uint256 toknext;
+    int256 toksuper;
+}
+</code></pre>
+<h2 id="enums"><a class="header" href="#enums">Enums</a></h2>
+<h3 id="jsmntype"><a class="header" href="#jsmntype">JsmnType</a></h3>
+<pre><code class="language-solidity">enum JsmnType {
+    UNDEFINED,
+    OBJECT,
+    ARRAY,
+    STRING,
+    PRIMITIVE
+}
+</code></pre>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../../../src/providers/index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../../../src/dependencies/index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next" href="../../../src/providers/interfaces/IProvider.sol/interface.IProvider.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="../../../src/providers/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -194,11 +272,11 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../../../src/providers/index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../../../src/dependencies/index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next" href="../../../src/providers/interfaces/IProvider.sol/interface.IProvider.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="../../../src/providers/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>

@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>❱ interfaces - Foundry Template</title>
+        <title>GoogleProvider - Foundry Template</title>
 
 
         <!-- Custom HTML head -->
@@ -84,7 +84,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item "><a href="../../../index.html">Home</a></li><li class="chapter-item affix "><li class="part-title">src</li><li class="chapter-item "><a href="../../../src/dependencies/index.html">❱ dependencies</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../src/dependencies/JsmnSolLib.sol/library.JsmnSolLib.html">JsmnSolLib</a></li></ol></li><li class="chapter-item expanded "><a href="../../../src/providers/index.html">❱ providers</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../src/providers/interfaces/index.html" class="active">❱ interfaces</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../src/providers/interfaces/IProvider.sol/interface.IProvider.html">IProvider</a></li><li class="chapter-item "><a href="../../../src/providers/interfaces/IProviderManager.sol/interface.IProviderManager.html">IProviderManager</a></li></ol></li><li class="chapter-item "><a href="../../../src/providers/oracles/index.html">❱ oracles</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../src/providers/oracles/interfaces/index.html">❱ interfaces</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../src/providers/oracles/interfaces/IOracle.sol/interface.IOracle.html">IOracle</a></li><li class="chapter-item "><a href="../../../src/providers/oracles/interfaces/IOracleMessageReceiver.sol/interface.IOracleMessageReceiver.html">IOracleMessageReceiver</a></li></ol></li><li class="chapter-item "><a href="../../../src/providers/oracles/ChainlinkOracle.sol/contract.ChaunlinkOracle.html">ChaunlinkOracle</a></li></ol></li><li class="chapter-item "><a href="../../../src/providers/GoogleProvider.sol/contract.GoogleProvider.html">GoogleProvider</a></li><li class="chapter-item "><a href="../../../src/providers/ProviderManager.sol/contract.ProviderManager.html">ProviderManager</a></li></ol></li><li class="chapter-item "><a href="../../../src/WalletExample.sol/contract.Wallet.html">Wallet</a></li></ol>
+                <ol class="chapter"><li class="chapter-item "><a href="../../../index.html">Home</a></li><li class="chapter-item affix "><li class="part-title">src</li><li class="chapter-item "><a href="../../../src/dependencies/index.html">❱ dependencies</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../src/dependencies/JsmnSolLib.sol/library.JsmnSolLib.html">JsmnSolLib</a></li></ol></li><li class="chapter-item expanded "><a href="../../../src/providers/index.html">❱ providers</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../src/providers/interfaces/index.html">❱ interfaces</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../src/providers/interfaces/IProvider.sol/interface.IProvider.html">IProvider</a></li><li class="chapter-item "><a href="../../../src/providers/interfaces/IProviderManager.sol/interface.IProviderManager.html">IProviderManager</a></li></ol></li><li class="chapter-item "><a href="../../../src/providers/oracles/index.html">❱ oracles</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../src/providers/oracles/interfaces/index.html">❱ interfaces</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../src/providers/oracles/interfaces/IOracle.sol/interface.IOracle.html">IOracle</a></li><li class="chapter-item "><a href="../../../src/providers/oracles/interfaces/IOracleMessageReceiver.sol/interface.IOracleMessageReceiver.html">IOracleMessageReceiver</a></li></ol></li><li class="chapter-item "><a href="../../../src/providers/oracles/ChainlinkOracle.sol/contract.ChaunlinkOracle.html">ChaunlinkOracle</a></li></ol></li><li class="chapter-item expanded "><a href="../../../src/providers/GoogleProvider.sol/contract.GoogleProvider.html" class="active">GoogleProvider</a></li><li class="chapter-item "><a href="../../../src/providers/ProviderManager.sol/contract.ProviderManager.html">ProviderManager</a></li></ol></li><li class="chapter-item "><a href="../../../src/WalletExample.sol/contract.Wallet.html">Wallet</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -170,21 +170,68 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="contents"><a class="header" href="#contents">Contents</a></h1>
-<ul>
-<li><a href="IProvider.sol/interface.IProvider.html">IProvider</a></li>
-<li><a href="IProviderManager.sol/interface.IProviderManager.html">IProviderManager</a></li>
-</ul>
+                        <h1 id="googleprovider"><a class="header" href="#googleprovider">GoogleProvider</a></h1>
+<p><a href="https://github.com/threesigmaxyz/sigma-wallet/blob/afb585a44f65dc580e0d59e3ca80e1795c20893e/src/providers/GoogleProvider.sol">Git Source</a></p>
+<p><strong>Inherits:</strong>
+<a href="/src/providers/interfaces/IProvider.sol/interface.IProvider.html">IProvider</a>, <a href="/src/providers/oracles/interfaces/IOracleMessageReceiver.sol/interface.IOracleMessageReceiver.html">IOracleMessageReceiver</a></p>
+<h2 id="state-variables"><a class="header" href="#state-variables">State Variables</a></h2>
+<h3 id="_name"><a class="header" href="#_name">_name</a></h3>
+<pre><code class="language-solidity">string internal constant _name = &quot;Google&quot;;
+</code></pre>
+<h3 id="_publickeysurl"><a class="header" href="#_publickeysurl">_publicKeysUrl</a></h3>
+<pre><code class="language-solidity">string internal constant _publicKeysUrl =
+    &quot;https://www.googleapis.com/robot/v1/metadata/x509/securetoken@system.gserviceaccount.com&quot;;
+</code></pre>
+<h3 id="_kuids"><a class="header" href="#_kuids">_kuids</a></h3>
+<pre><code class="language-solidity">string[] internal _kuids;
+</code></pre>
+<h3 id="_kuidtomodulushash"><a class="header" href="#_kuidtomodulushash">_kuidToModulusHash</a></h3>
+<pre><code class="language-solidity">mapping(string =&gt; bytes32) internal _kuidToModulusHash;
+</code></pre>
+<h3 id="_providermanager"><a class="header" href="#_providermanager">_providerManager</a></h3>
+<pre><code class="language-solidity">address internal immutable _providerManager;
+</code></pre>
+<h3 id="_oracle"><a class="header" href="#_oracle">_oracle</a></h3>
+<pre><code class="language-solidity">address internal immutable _oracle;
+</code></pre>
+<h2 id="functions"><a class="header" href="#functions">Functions</a></h2>
+<h3 id="onlyprovidermanager"><a class="header" href="#onlyprovidermanager">onlyProviderManager</a></h3>
+<pre><code class="language-solidity">modifier onlyProviderManager();
+</code></pre>
+<h3 id="onlyoracle"><a class="header" href="#onlyoracle">onlyOracle</a></h3>
+<pre><code class="language-solidity">modifier onlyOracle();
+</code></pre>
+<h3 id="constructor"><a class="header" href="#constructor">constructor</a></h3>
+<pre><code class="language-solidity">constructor(address oracle_);
+</code></pre>
+<h3 id="verifytoken"><a class="header" href="#verifytoken">verifyToken</a></h3>
+<pre><code class="language-solidity">function verifyToken(bytes memory token_) external view override returns (bool);
+</code></pre>
+<h3 id="requestpublickeysupdate"><a class="header" href="#requestpublickeysupdate">requestPublicKeysUpdate</a></h3>
+<pre><code class="language-solidity">function requestPublicKeysUpdate() external override;
+</code></pre>
+<h3 id="handleoraclemessage"><a class="header" href="#handleoraclemessage">handleOracleMessage</a></h3>
+<pre><code class="language-solidity">function handleOracleMessage(string memory response_) external override onlyOracle;
+</code></pre>
+<h3 id="name"><a class="header" href="#name">name</a></h3>
+<pre><code class="language-solidity">function name() external pure override returns (string memory);
+</code></pre>
+<h3 id="publickeys"><a class="header" href="#publickeys">publicKeys</a></h3>
+<pre><code class="language-solidity">function publicKeys() external view override returns (PublicKey[] memory publicKeys_);
+</code></pre>
+<h3 id="forceupdatepublickeys"><a class="header" href="#forceupdatepublickeys">forceUpdatePublicKeys</a></h3>
+<pre><code class="language-solidity">function forceUpdatePublicKeys(bytes memory publicKeys_) external override onlyProviderManager;
+</code></pre>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../../../src/providers/index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../../../src/providers/oracles/ChainlinkOracle.sol/contract.ChaunlinkOracle.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next" href="../../../src/providers/interfaces/IProvider.sol/interface.IProvider.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="../../../src/providers/ProviderManager.sol/contract.ProviderManager.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -194,11 +241,11 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../../../src/providers/index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../../../src/providers/oracles/ChainlinkOracle.sol/contract.ChaunlinkOracle.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next" href="../../../src/providers/interfaces/IProvider.sol/interface.IProvider.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="../../../src/providers/ProviderManager.sol/contract.ProviderManager.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>

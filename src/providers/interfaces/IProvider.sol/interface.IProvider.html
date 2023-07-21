@@ -84,7 +84,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item "><a href="../../../../index.html">Home</a></li><li class="chapter-item affix "><li class="part-title">src</li><li class="chapter-item expanded "><a href="../../../../src/providers/index.html">❱ providers</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../../src/providers/interfaces/index.html">❱ interfaces</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../../src/providers/interfaces/IProvider.sol/interface.IProvider.html" class="active">IProvider</a></li><li class="chapter-item "><a href="../../../../src/providers/interfaces/IProviderManager.sol/interface.IProviderManager.html">IProviderManager</a></li></ol></li><li class="chapter-item "><a href="../../../../src/providers/oracles/index.html">❱ oracles</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../../src/providers/oracles/ChainlinkOracle.sol/contract.ChaunlinkOracle.html">ChaunlinkOracle</a></li></ol></li><li class="chapter-item "><a href="../../../../src/providers/GoogleProvider.sol/abstract.GoogleProvider.html">GoogleProvider</a></li><li class="chapter-item "><a href="../../../../src/providers/ProviderManager.sol/contract.ProviderManager.html">ProviderManager</a></li></ol></li><li class="chapter-item "><a href="../../../../src/WalletExample.sol/contract.Wallet.html">Wallet</a></li></ol>
+                <ol class="chapter"><li class="chapter-item "><a href="../../../../index.html">Home</a></li><li class="chapter-item affix "><li class="part-title">src</li><li class="chapter-item "><a href="../../../../src/dependencies/index.html">❱ dependencies</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../../src/dependencies/JsmnSolLib.sol/library.JsmnSolLib.html">JsmnSolLib</a></li></ol></li><li class="chapter-item expanded "><a href="../../../../src/providers/index.html">❱ providers</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../../src/providers/interfaces/index.html">❱ interfaces</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../../src/providers/interfaces/IProvider.sol/interface.IProvider.html" class="active">IProvider</a></li><li class="chapter-item "><a href="../../../../src/providers/interfaces/IProviderManager.sol/interface.IProviderManager.html">IProviderManager</a></li></ol></li><li class="chapter-item "><a href="../../../../src/providers/oracles/index.html">❱ oracles</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../../src/providers/oracles/interfaces/index.html">❱ interfaces</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../../src/providers/oracles/interfaces/IOracle.sol/interface.IOracle.html">IOracle</a></li><li class="chapter-item "><a href="../../../../src/providers/oracles/interfaces/IOracleMessageReceiver.sol/interface.IOracleMessageReceiver.html">IOracleMessageReceiver</a></li></ol></li><li class="chapter-item "><a href="../../../../src/providers/oracles/ChainlinkOracle.sol/contract.ChaunlinkOracle.html">ChaunlinkOracle</a></li></ol></li><li class="chapter-item "><a href="../../../../src/providers/GoogleProvider.sol/contract.GoogleProvider.html">GoogleProvider</a></li><li class="chapter-item "><a href="../../../../src/providers/ProviderManager.sol/contract.ProviderManager.html">ProviderManager</a></li></ol></li><li class="chapter-item "><a href="../../../../src/WalletExample.sol/contract.Wallet.html">Wallet</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -171,13 +171,35 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="iprovider"><a class="header" href="#iprovider">IProvider</a></h1>
-<p><a href="https://github.com/threesigmaxyz/sigma-wallet/blob/1497e83d6083438bba1e1fe60c46e6bd68340622/src/providers/interfaces/IProvider.sol">Git Source</a></p>
+<p><a href="https://github.com/threesigmaxyz/sigma-wallet/blob/afb585a44f65dc580e0d59e3ca80e1795c20893e/src/providers/interfaces/IProvider.sol">Git Source</a></p>
 <h2 id="functions"><a class="header" href="#functions">Functions</a></h2>
+<h3 id="verifytoken"><a class="header" href="#verifytoken">verifyToken</a></h3>
+<pre><code class="language-solidity">function verifyToken(bytes memory token_) external view returns (bool);
+</code></pre>
+<h3 id="requestpublickeysupdate"><a class="header" href="#requestpublickeysupdate">requestPublicKeysUpdate</a></h3>
+<pre><code class="language-solidity">function requestPublicKeysUpdate() external;
+</code></pre>
 <h3 id="name"><a class="header" href="#name">name</a></h3>
 <pre><code class="language-solidity">function name() external view returns (string memory);
 </code></pre>
 <h3 id="publickeys"><a class="header" href="#publickeys">publicKeys</a></h3>
 <pre><code class="language-solidity">function publicKeys() external view returns (PublicKey[] memory);
+</code></pre>
+<h3 id="forceupdatepublickeys"><a class="header" href="#forceupdatepublickeys">forceUpdatePublicKeys</a></h3>
+<pre><code class="language-solidity">function forceUpdatePublicKeys(bytes memory publicKeys_) external;
+</code></pre>
+<h2 id="errors"><a class="header" href="#errors">Errors</a></h2>
+<h3 id="onlyprovidermanager"><a class="header" href="#onlyprovidermanager">OnlyProviderManager</a></h3>
+<pre><code class="language-solidity">error OnlyProviderManager(address);
+</code></pre>
+<h3 id="nooracleerror"><a class="header" href="#nooracleerror">NoOracleError</a></h3>
+<pre><code class="language-solidity">error NoOracleError();
+</code></pre>
+<h3 id="onlyoracle"><a class="header" href="#onlyoracle">OnlyOracle</a></h3>
+<pre><code class="language-solidity">error OnlyOracle(address);
+</code></pre>
+<h3 id="invalidtokenerror"><a class="header" href="#invalidtokenerror">InvalidTokenError</a></h3>
+<pre><code class="language-solidity">error InvalidTokenError(bytes);
 </code></pre>
 <h2 id="structs"><a class="header" href="#structs">Structs</a></h2>
 <h3 id="publickey"><a class="header" href="#publickey">PublicKey</a></h3>

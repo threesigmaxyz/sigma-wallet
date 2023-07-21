@@ -84,7 +84,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item "><a href="../../../../index.html">Home</a></li><li class="chapter-item affix "><li class="part-title">src</li><li class="chapter-item expanded "><a href="../../../../src/providers/index.html">❱ providers</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../../src/providers/interfaces/index.html">❱ interfaces</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../../src/providers/interfaces/IProvider.sol/interface.IProvider.html">IProvider</a></li><li class="chapter-item expanded "><a href="../../../../src/providers/interfaces/IProviderManager.sol/interface.IProviderManager.html" class="active">IProviderManager</a></li></ol></li><li class="chapter-item "><a href="../../../../src/providers/oracles/index.html">❱ oracles</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../../src/providers/oracles/ChainlinkOracle.sol/contract.ChaunlinkOracle.html">ChaunlinkOracle</a></li></ol></li><li class="chapter-item "><a href="../../../../src/providers/GoogleProvider.sol/abstract.GoogleProvider.html">GoogleProvider</a></li><li class="chapter-item "><a href="../../../../src/providers/ProviderManager.sol/contract.ProviderManager.html">ProviderManager</a></li></ol></li><li class="chapter-item "><a href="../../../../src/WalletExample.sol/contract.Wallet.html">Wallet</a></li></ol>
+                <ol class="chapter"><li class="chapter-item "><a href="../../../../index.html">Home</a></li><li class="chapter-item affix "><li class="part-title">src</li><li class="chapter-item "><a href="../../../../src/dependencies/index.html">❱ dependencies</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../../src/dependencies/JsmnSolLib.sol/library.JsmnSolLib.html">JsmnSolLib</a></li></ol></li><li class="chapter-item expanded "><a href="../../../../src/providers/index.html">❱ providers</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../../src/providers/interfaces/index.html">❱ interfaces</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../../src/providers/interfaces/IProvider.sol/interface.IProvider.html">IProvider</a></li><li class="chapter-item expanded "><a href="../../../../src/providers/interfaces/IProviderManager.sol/interface.IProviderManager.html" class="active">IProviderManager</a></li></ol></li><li class="chapter-item "><a href="../../../../src/providers/oracles/index.html">❱ oracles</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../../src/providers/oracles/interfaces/index.html">❱ interfaces</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../../src/providers/oracles/interfaces/IOracle.sol/interface.IOracle.html">IOracle</a></li><li class="chapter-item "><a href="../../../../src/providers/oracles/interfaces/IOracleMessageReceiver.sol/interface.IOracleMessageReceiver.html">IOracleMessageReceiver</a></li></ol></li><li class="chapter-item "><a href="../../../../src/providers/oracles/ChainlinkOracle.sol/contract.ChaunlinkOracle.html">ChaunlinkOracle</a></li></ol></li><li class="chapter-item "><a href="../../../../src/providers/GoogleProvider.sol/contract.GoogleProvider.html">GoogleProvider</a></li><li class="chapter-item "><a href="../../../../src/providers/ProviderManager.sol/contract.ProviderManager.html">ProviderManager</a></li></ol></li><li class="chapter-item "><a href="../../../../src/WalletExample.sol/contract.Wallet.html">Wallet</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -171,7 +171,42 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="iprovidermanager"><a class="header" href="#iprovidermanager">IProviderManager</a></h1>
-<p><a href="https://github.com/threesigmaxyz/sigma-wallet/blob/1497e83d6083438bba1e1fe60c46e6bd68340622/src/providers/interfaces/IProviderManager.sol">Git Source</a></p>
+<p><a href="https://github.com/threesigmaxyz/sigma-wallet/blob/afb585a44f65dc580e0d59e3ca80e1795c20893e/src/providers/interfaces/IProviderManager.sol">Git Source</a></p>
+<h2 id="functions"><a class="header" href="#functions">Functions</a></h2>
+<h3 id="verifytoken"><a class="header" href="#verifytoken">verifyToken</a></h3>
+<pre><code class="language-solidity">function verifyToken(string memory providerName_, bytes memory token_) external view returns (bool);
+</code></pre>
+<h3 id="updateproviderpublickeys"><a class="header" href="#updateproviderpublickeys">updateProviderPublicKeys</a></h3>
+<pre><code class="language-solidity">function updateProviderPublicKeys(string memory providerName_) external;
+</code></pre>
+<h3 id="addprovider"><a class="header" href="#addprovider">addProvider</a></h3>
+<pre><code class="language-solidity">function addProvider(bytes memory providerBytecode_) external;
+</code></pre>
+<h3 id="updateprovider"><a class="header" href="#updateprovider">updateProvider</a></h3>
+<pre><code class="language-solidity">function updateProvider(bytes memory providerBytecode_, uint256 providerIndex_) external;
+</code></pre>
+<h3 id="getproviders"><a class="header" href="#getproviders">getProviders</a></h3>
+<pre><code class="language-solidity">function getProviders() external view returns (Provider[] memory providers_);
+</code></pre>
+<h3 id="forceupdateproviderpublickeys"><a class="header" href="#forceupdateproviderpublickeys">forceUpdateProviderPublicKeys</a></h3>
+<pre><code class="language-solidity">function forceUpdateProviderPublicKeys(string memory providerName_, bytes memory publicKeys_) external;
+</code></pre>
+<h2 id="errors"><a class="header" href="#errors">Errors</a></h2>
+<h3 id="onlygovernanceerror"><a class="header" href="#onlygovernanceerror">OnlyGovernanceError</a></h3>
+<pre><code class="language-solidity">error OnlyGovernanceError(address);
+</code></pre>
+<h3 id="provideralreadyexistserror"><a class="header" href="#provideralreadyexistserror">ProviderAlreadyExistsError</a></h3>
+<pre><code class="language-solidity">error ProviderAlreadyExistsError(string providerName);
+</code></pre>
+<h3 id="providerdoesnotexisterror"><a class="header" href="#providerdoesnotexisterror">ProviderDoesNotExistError</a></h3>
+<pre><code class="language-solidity">error ProviderDoesNotExistError(string providerName);
+</code></pre>
+<h3 id="wrongproviderindexerror"><a class="header" href="#wrongproviderindexerror">WrongProviderIndexError</a></h3>
+<pre><code class="language-solidity">error WrongProviderIndexError(uint256 index);
+</code></pre>
+<h3 id="providernotfounderror"><a class="header" href="#providernotfounderror">ProviderNotFoundError</a></h3>
+<pre><code class="language-solidity">error ProviderNotFoundError(string providerName);
+</code></pre>
 <h2 id="structs"><a class="header" href="#structs">Structs</a></h2>
 <h3 id="provider"><a class="header" href="#provider">Provider</a></h3>
 <pre><code class="language-solidity">struct Provider {
