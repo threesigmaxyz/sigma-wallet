@@ -7,6 +7,8 @@ interface IProvider {
         bytes32 modulusHash;
     }
 
+    error OnlyProviderManager(address);
+
     function name() external view returns (string memory);
 
     function publicKeys() external view returns (PublicKey[] memory);
