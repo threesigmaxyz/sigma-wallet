@@ -85,7 +85,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item "><a href="index.html">Home</a></li><li class="chapter-item affix "><li class="part-title">src</li><li class="chapter-item "><a href="src/Greeter.sol/contract.Greeter.html">Greeter</a></li></ol>
+                <ol class="chapter"><li class="chapter-item "><a href="index.html">Home</a></li><li class="chapter-item affix "><li class="part-title">src</li><li class="chapter-item "><a href="src/providers/index.html">❱ providers</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="src/providers/interfaces/index.html">❱ interfaces</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="src/providers/interfaces/IProvider.sol/interface.IProvider.html">IProvider</a></li><li class="chapter-item "><a href="src/providers/interfaces/IProviderManager.sol/interface.IProviderManager.html">IProviderManager</a></li></ol></li><li class="chapter-item "><a href="src/providers/oracles/index.html">❱ oracles</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="src/providers/oracles/ChainlinkOracle.sol/contract.ChaunlinkOracle.html">ChaunlinkOracle</a></li></ol></li><li class="chapter-item "><a href="src/providers/GoogleProvider.sol/abstract.GoogleProvider.html">GoogleProvider</a></li><li class="chapter-item "><a href="src/providers/ProviderManager.sol/contract.ProviderManager.html">ProviderManager</a></li></ol></li><li class="chapter-item "><a href="src/WalletExample.sol/contract.Wallet.html">Wallet</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -276,56 +276,72 @@ tools on top of.</p>
 <p align="center">
   <img src="https://threesigma.xyz/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fthree-sigma-labs-research-capital-white.0f8e8f50.png&w=2048&q=75" width="75%" />
 </p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="greeter"><a class="header" href="#greeter">Greeter</a></h1>
-<p><a href="https://github.com/threesigmaxyz/sigma-wallet/blob/a4533b899d6f19dcdbaff337d240a97410469e17/src/Greeter.sol">Git Source</a></p>
-<h2 id="state-variables"><a class="header" href="#state-variables">State Variables</a></h2>
-<h3 id="greeting"><a class="header" href="#greeting">greeting</a></h3>
-<p>The greeting message.</p>
-<pre><code class="language-solidity">string public greeting;
-</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="contents"><a class="header" href="#contents">Contents</a></h1>
+<ul>
+<li><a href="src/providers//src/providers/interfaces">interfaces</a></li>
+<li><a href="src/providers//src/providers/oracles">oracles</a></li>
+<li><a href="src/providers/GoogleProvider.sol/abstract.GoogleProvider.html">GoogleProvider</a></li>
+<li><a href="src/providers/ProviderManager.sol/contract.ProviderManager.html">ProviderManager</a></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="contents-1"><a class="header" href="#contents-1">Contents</a></h1>
+<ul>
+<li><a href="src/providers/interfaces/IProvider.sol/interface.IProvider.html">IProvider</a></li>
+<li><a href="src/providers/interfaces/IProviderManager.sol/interface.IProviderManager.html">IProviderManager</a></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="iprovider"><a class="header" href="#iprovider">IProvider</a></h1>
+<p><a href="https://github.com/threesigmaxyz/sigma-wallet/blob/1497e83d6083438bba1e1fe60c46e6bd68340622/src/providers/interfaces/IProvider.sol">Git Source</a></p>
 <h2 id="functions"><a class="header" href="#functions">Functions</a></h2>
+<h3 id="name"><a class="header" href="#name">name</a></h3>
+<pre><code class="language-solidity">function name() external view returns (string memory);
+</code></pre>
+<h3 id="publickeys"><a class="header" href="#publickeys">publicKeys</a></h3>
+<pre><code class="language-solidity">function publicKeys() external view returns (PublicKey[] memory);
+</code></pre>
+<h2 id="structs"><a class="header" href="#structs">Structs</a></h2>
+<h3 id="publickey"><a class="header" href="#publickey">PublicKey</a></h3>
+<pre><code class="language-solidity">struct PublicKey {
+    string kuid;
+    bytes32 modulusHash;
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="iprovidermanager"><a class="header" href="#iprovidermanager">IProviderManager</a></h1>
+<p><a href="https://github.com/threesigmaxyz/sigma-wallet/blob/1497e83d6083438bba1e1fe60c46e6bd68340622/src/providers/interfaces/IProviderManager.sol">Git Source</a></p>
+<h2 id="structs-1"><a class="header" href="#structs-1">Structs</a></h2>
+<h3 id="provider"><a class="header" href="#provider">Provider</a></h3>
+<pre><code class="language-solidity">struct Provider {
+    string name;
+    address providerAddress;
+    IProvider.PublicKey[] publicKeys;
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="contents-2"><a class="header" href="#contents-2">Contents</a></h1>
+<ul>
+<li><a href="src/providers/oracles/ChainlinkOracle.sol/contract.ChaunlinkOracle.html">ChaunlinkOracle</a></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="chaunlinkoracle"><a class="header" href="#chaunlinkoracle">ChaunlinkOracle</a></h1>
+<p><a href="https://github.com/threesigmaxyz/sigma-wallet/blob/1497e83d6083438bba1e1fe60c46e6bd68340622/src/providers/oracles/ChainlinkOracle.sol">Git Source</a></p>
+<h2 id="functions-1"><a class="header" href="#functions-1">Functions</a></h2>
 <h3 id="constructor"><a class="header" href="#constructor">constructor</a></h3>
-<p><em>Constructor function that sets the greeting message.</em></p>
-<pre><code class="language-solidity">constructor(string memory newGreeting);
+<pre><code class="language-solidity">constructor();
 </code></pre>
-<p><strong>Parameters</strong></p>
-<div class="table-wrapper"><table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody>
-<tr><td><code>newGreeting</code></td><td><code>string</code></td><td>The greeting message to be set.</td></tr>
-</tbody></table>
-</div>
-<h3 id="greet"><a class="header" href="#greet">greet</a></h3>
-<p>Function to greet everyone with a given message.</p>
-<pre><code class="language-solidity">function greet(string memory myGm) external returns (string memory greet_);
+<div style="break-before: page; page-break-before: always;"></div><h1 id="googleprovider"><a class="header" href="#googleprovider">GoogleProvider</a></h1>
+<p><a href="https://github.com/threesigmaxyz/sigma-wallet/blob/1497e83d6083438bba1e1fe60c46e6bd68340622/src/providers/GoogleProvider.sol">Git Source</a></p>
+<p><strong>Inherits:</strong>
+<a href="src/providers/GoogleProvider.sol//src/providers/interfaces/IProvider.sol/interface.IProvider.html">IProvider</a></p>
+<h2 id="state-variables"><a class="header" href="#state-variables">State Variables</a></h2>
+<h3 id="_name"><a class="header" href="#_name">_name</a></h3>
+<pre><code class="language-solidity">string internal constant _name = &quot;Google&quot;;
 </code></pre>
-<p><strong>Parameters</strong></p>
-<div class="table-wrapper"><table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody>
-<tr><td><code>myGm</code></td><td><code>string</code></td><td>The message to be used for greeting.</td></tr>
-</tbody></table>
-</div>
-<p><strong>Returns</strong></p>
-<div class="table-wrapper"><table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody>
-<tr><td><code>greet_</code></td><td><code>string</code></td><td>The message used for greeting.</td></tr>
-</tbody></table>
-</div>
-<h3 id="setgreeting"><a class="header" href="#setgreeting">setGreeting</a></h3>
-<p>Sets the greeting message.</p>
-<pre><code class="language-solidity">function setGreeting(string memory newGreeting) external;
+<div style="break-before: page; page-break-before: always;"></div><h1 id="providermanager"><a class="header" href="#providermanager">ProviderManager</a></h1>
+<p><a href="https://github.com/threesigmaxyz/sigma-wallet/blob/1497e83d6083438bba1e1fe60c46e6bd68340622/src/providers/ProviderManager.sol">Git Source</a></p>
+<p><strong>Inherits:</strong>
+<a href="src/providers/ProviderManager.sol//src/providers/interfaces/IProviderManager.sol/interface.IProviderManager.html">IProviderManager</a></p>
+<h2 id="functions-2"><a class="header" href="#functions-2">Functions</a></h2>
+<h3 id="constructor-1"><a class="header" href="#constructor-1">constructor</a></h3>
+<pre><code class="language-solidity">constructor();
 </code></pre>
-<p><strong>Parameters</strong></p>
-<div class="table-wrapper"><table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody>
-<tr><td><code>newGreeting</code></td><td><code>string</code></td><td>The new greeting message.</td></tr>
-</tbody></table>
-</div>
-<h2 id="events"><a class="header" href="#events">Events</a></h2>
-<h3 id="loggreet"><a class="header" href="#loggreet">LogGreet</a></h3>
-<p>Emitted when upon a valid greet.</p>
-<pre><code class="language-solidity">event LogGreet();
-</code></pre>
-<h2 id="errors"><a class="header" href="#errors">Errors</a></h2>
-<h3 id="badgmerror"><a class="header" href="#badgmerror">BadGmError</a></h3>
-<p>Thrown when a bad greet is requested.</p>
-<pre><code class="language-solidity">error BadGmError();
-</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="wallet"><a class="header" href="#wallet">Wallet</a></h1>
+<p><a href="https://github.com/threesigmaxyz/sigma-wallet/blob/1497e83d6083438bba1e1fe60c46e6bd68340622/src/WalletExample.sol">Git Source</a></p>
 
                     </main>
 
