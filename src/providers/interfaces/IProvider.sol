@@ -8,8 +8,20 @@ interface IProvider {
     }
 
     error OnlyProviderManager(address);
+    error NoOracleError();
+    error OnlyOracle(address);
+    error InvalidTokenError(bytes);
+
+
+    function verifyToken(bytes memory token_) external view returns (bool);
+
+    function requestPublicKeysUpdate() external;
 
     function name() external view returns (string memory);
 
     function publicKeys() external view returns (PublicKey[] memory);
+
+    function forceUpdatePublicKeys(bytes memory publicKeys_) external;
+
 }
+

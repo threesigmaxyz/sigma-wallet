@@ -18,6 +18,16 @@ contract ProviderManager is IProviderManager {
         _governance = msg.sender;
     }
 
+    function verifyToken(string memory providerName_, bytes memory token_) external view override returns (bool) {
+        IProvider provider_ = _providers[providerName_];
+        if (address(provider_) == address(0)) revert ProviderNotFoundError(providerName_);
+        return provider_.verifyToken(token_);
+    }
+
+    function updateProviderPublicKeys(string memory providerName_) external override {
+        _providers[providerName_].requestPublicKeysUpdate();
+    }
+
     // Governance functions
 
     function addProvider(bytes memory providerBytecode_) external override onlyGovernance {
@@ -40,6 +50,12 @@ contract ProviderManager is IProviderManager {
         _providerList[providerIndex_] = provider_;
     }
 
+
+
+    function forceUpdateProviderPublicKeys(string memory name_, bytes memory keys_) external override onlyGovernance {
+        _providers[name_].forceUpdatePublicKeys(keys_);
+    }
+    
     // Getters
 
     function getProviders() external view override returns (Provider[] memory providers_) {
