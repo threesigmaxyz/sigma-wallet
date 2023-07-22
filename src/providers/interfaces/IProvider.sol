@@ -12,13 +12,16 @@ interface IProvider {
     error OnlyOracle(address);
     error InvalidTokenError(bytes);
 
-    function verifyToken(string memory headerJson, string memory payloadJson, bytes memory signature, string memory subject) external view returns (bool);
+    function verifyToken(
+        string memory headerJson,
+        string memory payloadJson,
+        bytes memory signature,
+        string memory subject
+    ) external view returns (bool);
 
     function requestPublicKeysUpdate() external;
 
     function name() external view returns (string memory);
 
     function addKeys(bytes memory publicKeys_) external;
-
 }
-

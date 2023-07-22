@@ -32,7 +32,12 @@ contract GoogleProvider is Verifier, IProvider, IOracleMessageReceiver {
         _oracle = oracle_;
     }
 
-    function verifyToken(string memory headerJson, string memory payloadJson, bytes memory signature, string memory subject) external view override returns (bool) {
+    function verifyToken(
+        string memory headerJson,
+        string memory payloadJson,
+        bytes memory signature,
+        string memory subject
+    ) external view override returns (bool) {
         _verifyToken(headerJson, payloadJson, signature, subject);
         // verify token_ is signed by providerPublicKey
         return true;
@@ -60,7 +65,8 @@ contract GoogleProvider is Verifier, IProvider, IOracleMessageReceiver {
         return _name;
     }
 
-    function addKeys(bytes memory publicKeys_) external override { //onlyProviderManager
+    function addKeys(bytes memory publicKeys_) external override {
+        //onlyProviderManager
         (string[] memory kuids_, bytes[] memory modulusHashes_) = abi.decode(publicKeys_, (string[], bytes[]));
         for (uint256 i_; i_ < kuids_.length;) {
             _addKey(kuids_[i_], modulusHashes_[i_]);
