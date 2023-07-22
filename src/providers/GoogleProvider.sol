@@ -2,8 +2,6 @@
 pragma solidity ^0.8.12;
 
 import { IProvider } from "./interfaces/IProvider.sol";
-import { IOracle } from "src/providers/oracles/interfaces/IOracle.sol";
-import { IOracleMessageReceiver } from "src/providers/oracles/interfaces/IOracleMessageReceiver.sol";
 import { JsmnSolLib } from "src/dependencies/JsmnSolLib.sol";
 import { Verifier } from "src/verify/Verifier.sol";
 import { Functions, FunctionsClient } from "lib/functions-hardhat-starter-kit/contracts/dev/functions/FunctionsClient.sol";
