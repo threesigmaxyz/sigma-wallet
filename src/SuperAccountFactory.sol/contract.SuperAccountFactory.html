@@ -171,7 +171,7 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="superaccountfactory"><a class="header" href="#superaccountfactory">SuperAccountFactory</a></h1>
-<p><a href="https://github.com/threesigmaxyz/sigma-wallet/blob/3fca65cf3a76bdd26dbd49e16f95272dcdc25fd2/src/SuperAccountFactory.sol">Git Source</a></p>
+<p><a href="https://github.com/threesigmaxyz/sigma-wallet/blob/d03649676f888a9b5d42684e7676bed87ff6be12/src/SuperAccountFactory.sol">Git Source</a></p>
 <p>A sample factory contract for SimpleAccount
 A UserOperations &quot;initCode&quot; holds the address of the factory, and a method call (to createAccount, in this sample factory).
 The factory's createAccount returns the target account address even if it is already installed.
@@ -189,11 +189,11 @@ This way, the entryPoint.getSenderAddress() can be called either before or after
 returns the address even if the account is already deployed.
 Note that during UserOperation execution, this method is called only if the account is not deployed.
 This method returns an existing account address so that entryPoint.getSenderAddress() would work even after account creation</p>
-<pre><code class="language-solidity">function createAccount(address owner, uint256 salt) public returns (SuperAccount ret);
+<pre><code class="language-solidity">function createAccount(address owner, string memory ownerId, uint256 salt) public returns (SuperAccount ret);
 </code></pre>
 <h3 id="getaddress"><a class="header" href="#getaddress">getAddress</a></h3>
 <p>calculate the counterfactual address of this account as it would be returned by createAccount()</p>
-<pre><code class="language-solidity">function getAddress(address owner, uint256 salt) public view returns (address);
+<pre><code class="language-solidity">function getAddress(address owner, string memory ownerId, uint256 salt) public view returns (address);
 </code></pre>
 
                     </main>

@@ -171,7 +171,7 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="solrsaverify"><a class="header" href="#solrsaverify">SolRsaVerify</a></h1>
-<p><a href="https://github.com/threesigmaxyz/sigma-wallet/blob/3fca65cf3a76bdd26dbd49e16f95272dcdc25fd2/src/verify/SolRsaVerify.sol">Git Source</a></p>
+<p><a href="https://github.com/threesigmaxyz/sigma-wallet/blob/d03649676f888a9b5d42684e7676bed87ff6be12/src/verify/SolRsaVerify.sol">Git Source</a></p>
 <h2 id="functions"><a class="header" href="#functions">Functions</a></h2>
 <h3 id="memcpy"><a class="header" href="#memcpy">memcpy</a></h3>
 <pre><code class="language-solidity">function memcpy(uint256 _dest, uint256 _src, uint256 _len) internal pure;
@@ -226,6 +226,12 @@ PS is padding filled with 0xff</p>
 <pre><code class="language-solidity">function pkcs1Sha256VerifyStr(string memory _data, bytes memory _s, bytes memory _e, bytes memory _m)
     internal
     view
+    returns (uint256);
+</code></pre>
+<h3 id="pkcs1sha256verifystring"><a class="header" href="#pkcs1sha256verifystring">pkcs1Sha256VerifyString</a></h3>
+<pre><code class="language-solidity">function pkcs1Sha256VerifyString(string memory _data, bytes memory _s, bytes memory _e, bytes memory _m)
+    internal
+    pure
     returns (uint256);
 </code></pre>
 

@@ -171,7 +171,7 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="superaccount"><a class="header" href="#superaccount">SuperAccount</a></h1>
-<p><a href="https://github.com/threesigmaxyz/sigma-wallet/blob/3fca65cf3a76bdd26dbd49e16f95272dcdc25fd2/src/SuperAccount.sol">Git Source</a></p>
+<p><a href="https://github.com/threesigmaxyz/sigma-wallet/blob/d03649676f888a9b5d42684e7676bed87ff6be12/src/SuperAccount.sol">Git Source</a></p>
 <p><strong>Inherits:</strong>
 BaseAccount, TokenCallbackHandler, UUPSUpgradeable, Initializable</p>
 <p>minimal account.
@@ -179,6 +179,9 @@ this is sample minimal account.
 has execute, eth handling methods
 has a single signer that can send requests through the entryPoint.</p>
 <h2 id="state-variables"><a class="header" href="#state-variables">State Variables</a></h2>
+<h3 id="ownerid"><a class="header" href="#ownerid">ownerId</a></h3>
+<pre><code class="language-solidity">string public ownerId;
+</code></pre>
 <h3 id="owner"><a class="header" href="#owner">owner</a></h3>
 <pre><code class="language-solidity">address public owner;
 </code></pre>
@@ -216,10 +219,10 @@ has a single signer that can send requests through the entryPoint.</p>
 <p><em>The _entryPoint member is immutable, to reduce gas consumption.  To upgrade EntryPoint,
 a new implementation of SimpleAccount must be deployed with the new EntryPoint address, then upgrading
 the implementation by calling <code>upgradeTo()</code></em></p>
-<pre><code class="language-solidity">function initialize(address anOwner) public virtual initializer;
+<pre><code class="language-solidity">function initialize(address anOwner, string memory anOwnerid) public virtual initializer;
 </code></pre>
 <h3 id="_initialize"><a class="header" href="#_initialize">_initialize</a></h3>
-<pre><code class="language-solidity">function _initialize(address anOwner) internal virtual;
+<pre><code class="language-solidity">function _initialize(address anOwner, string memory anOwnerid) internal virtual;
 </code></pre>
 <h3 id="_requirefromentrypointorowner"><a class="header" href="#_requirefromentrypointorowner">_requireFromEntryPointOrOwner</a></h3>
 <pre><code class="language-solidity">function _requireFromEntryPointOrOwner() internal view;
@@ -258,7 +261,7 @@ the implementation by calling <code>upgradeTo()</code></em></p>
 </code></pre>
 <h2 id="events"><a class="header" href="#events">Events</a></h2>
 <h3 id="simpleaccountinitialized"><a class="header" href="#simpleaccountinitialized">SimpleAccountInitialized</a></h3>
-<pre><code class="language-solidity">event SimpleAccountInitialized(IEntryPoint indexed entryPoint, address indexed owner);
+<pre><code class="language-solidity">event SimpleAccountInitialized(IEntryPoint indexed entryPoint, address indexed owner, string indexed ownerId);
 </code></pre>
 <h3 id="logstring"><a class="header" href="#logstring">LogString</a></h3>
 <pre><code class="language-solidity">event LogString(string info);
