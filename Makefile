@@ -8,8 +8,12 @@ clean :;
 
 # Install dependencies
 install :;
-	@forge install foundry-rs/forge-std@master && \
-	forge install openzeppelin/openzeppelin-contracts@master
+	@forge install foundry-rs/forge-std@master --no-commit && \
+	forge install openzeppelin/openzeppelin-contracts@master --no-commit && \
+	forge install eth-infinitism/account-abstraction@master --no-commit && \
+	forge install smartcontractkit/chainlink --no-commit && \
+	forge install smartcontractkit/functions-hardhat-starter-kit --no-commit && \
+
 
 # Update dependencies
 update :;
