@@ -1,6 +1,8 @@
 = ERC 777
 
 [.readme-notice]
+NOTE: Added here in case it is not included in the openzeppelin lib by default, add next to the other tokens
+
 NOTE: This document is better viewed at https://docs.openzeppelin.com/contracts/api/token/erc777
 
 CAUTION: As of v4.9, OpenZeppelin's implementation of ERC-777 is deprecated and will be removed in the next major release.
