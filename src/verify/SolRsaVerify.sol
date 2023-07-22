@@ -177,4 +177,16 @@ library SolRsaVerify {
     {
         return pkcs1Sha256Verify(sha256(bytes(_data)), _s, _e, _m);
     }
+
+    function pkcs1Sha256VerifyString(string memory _data, bytes memory _s, bytes memory _e, bytes memory _m)
+        internal
+        pure
+        returns (uint256)
+    {
+        _data;
+        _s;
+        _e;
+        _m;
+        return 0;
+    }
 }

@@ -23,12 +23,13 @@ import { IProviderManager } from "./providers/interfaces/IProviderManager.sol";
 contract SuperAccount is BaseAccount, TokenCallbackHandler, UUPSUpgradeable, Initializable {
     using ECDSA for bytes32;
 
+    string public ownerId;
     address public owner;
     IProviderManager internal immutable _providerManager;
 
     IEntryPoint private immutable _entryPoint;
 
-    event SimpleAccountInitialized(IEntryPoint indexed entryPoint, address indexed owner);
+    event SimpleAccountInitialized(IEntryPoint indexed entryPoint, address indexed owner, string indexed ownerId);
     event LogString(string info);
 
     modifier onlyOwner() {
@@ -79,13 +80,14 @@ contract SuperAccount is BaseAccount, TokenCallbackHandler, UUPSUpgradeable, Ini
      * a new implementation of SimpleAccount must be deployed with the new EntryPoint address, then upgrading
      * the implementation by calling `upgradeTo()`
      */
-    function initialize(address anOwner) public virtual initializer {
-        _initialize(anOwner);
+    function initialize(address anOwner, string memory anOwnerid) public virtual initializer {
+        _initialize(anOwner, anOwnerid);
     }
 
-    function _initialize(address anOwner) internal virtual {
+    function _initialize(address anOwner, string memory anOwnerid) internal virtual {
         owner = anOwner;
-        emit SimpleAccountInitialized(_entryPoint, owner);
+        ownerId = anOwnerid;
+        emit SimpleAccountInitialized(_entryPoint, owner, anOwnerid);
     }
 
     // Require the function call went through EntryPoint or owner
@@ -103,11 +105,11 @@ contract SuperAccount is BaseAccount, TokenCallbackHandler, UUPSUpgradeable, Ini
         userOpHash; // silence warning
 
         emit LogString("Decoding signature");
-        (string memory providerName_, string memory headerJson_, string memory payloadJson_, string memory subject_) =
-            abi.decode((userOp.signature), (string, string, string, string));
+        (string memory providerName_, string memory headerJson_, string memory payloadJson_, bytes memory signature) =
+            abi.decode((userOp.signature), (string, string, string, bytes));
         emit LogString(providerName_);
         emit LogString("Verifying Token");
-        _providerManager.verifyToken(providerName_, headerJson_, payloadJson_, userOp.signature, subject_);
+        _providerManager.verifyToken(providerName_, headerJson_, payloadJson_, signature, ownerId);
 
         emit LogString("Token verified");
         /*

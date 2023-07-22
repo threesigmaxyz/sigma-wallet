@@ -39,7 +39,6 @@ contract GoogleProvider is Verifier, IProvider, IOracleMessageReceiver {
         string memory subject
     ) external view override returns (bool) {
         _verifyToken(headerJson, payloadJson, signature, subject);
-        // verify token_ is signed by providerPublicKey
         return true;
     }
 

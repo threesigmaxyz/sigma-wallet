@@ -14,7 +14,7 @@ contract Verifier {
 
     mapping(string => bytes) keys;
 
-    function _recover(
+    function _verifyToken(
         string memory headerJson,
         string memory payloadJson,
         bytes memory signature,
@@ -29,9 +29,11 @@ contract Verifier {
         string memory kid = _parseHeader(headerJson);
         bytes memory exponent = _getRsaExponent(kid);
         bytes memory modulus = _getRsaModulus(kid);
-        require(message.pkcs1Sha256VerifyStr(signature, exponent, modulus) == 0, "RSA signature check failed");
+        require(message.pkcs1Sha256VerifyString(signature, exponent, modulus) == 0, "RSA signature check failed");
 
         (string memory aud, string memory nonce, string memory sub) = _parseToken(payloadJson);
+        aud; // silence warning
+        nonce; // silence warning
 
         require(sub.strCompare(subject) == 0, "Subject does not match");
 
@@ -39,13 +41,6 @@ contract Verifier {
         //string memory senderBase64 = "0";
         //require(senderBase64.strCompare(nonce) == 0, "Sender does not match nonce");
     }
-
-    function _verifyToken(
-        string memory headerJson,
-        string memory payloadJson,
-        bytes memory signature,
-        string memory subject
-    ) internal view { }
 
     function _parseHeader(string memory json) internal pure returns (string memory kid) {
         (uint256 exitCode, JsmnSolLib2.Token[] memory tokens, uint256 ntokens) = json.parse(20);

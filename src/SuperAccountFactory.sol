@@ -27,8 +27,8 @@ contract SuperAccountFactory {
      * Note that during UserOperation execution, this method is called only if the account is not deployed.
      * This method returns an existing account address so that entryPoint.getSenderAddress() would work even after account creation
      */
-    function createAccount(address owner, uint256 salt) public returns (SuperAccount ret) {
-        address addr = getAddress(owner, salt);
+    function createAccount(address owner, string memory ownerId, uint256 salt) public returns (SuperAccount ret) {
+        address addr = getAddress(owner, ownerId, salt);
         uint256 codeSize = addr.code.length;
         if (codeSize > 0) {
             return SuperAccount(payable(addr));
@@ -37,7 +37,7 @@ contract SuperAccountFactory {
             payable(
                 new ERC1967Proxy{salt : bytes32(salt)}(
                 address(accountImplementation),
-                abi.encodeCall(SuperAccount.initialize, (owner))
+                abi.encodeCall(SuperAccount.initialize, (owner, ownerId))
                 )
             )
         );
@@ -46,13 +46,13 @@ contract SuperAccountFactory {
     /**
      * calculate the counterfactual address of this account as it would be returned by createAccount()
      */
-    function getAddress(address owner, uint256 salt) public view returns (address) {
+    function getAddress(address owner, string memory ownerId, uint256 salt) public view returns (address) {
         return Create2.computeAddress(
             bytes32(salt),
             keccak256(
                 abi.encodePacked(
                     type(ERC1967Proxy).creationCode,
-                    abi.encode(address(accountImplementation), abi.encodeCall(SuperAccount.initialize, (owner)))
+                    abi.encode(address(accountImplementation), abi.encodeCall(SuperAccount.initialize, (owner, ownerId)))
                 )
             )
         );
