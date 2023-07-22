@@ -7,7 +7,6 @@ interface IProviderManager {
     struct Provider {
         string name;
         address providerAddress;
-        IProvider.PublicKey[] publicKeys;
     }
 
     error OnlyGovernanceError(address);
@@ -16,7 +15,7 @@ interface IProviderManager {
     error WrongProviderIndexError(uint256 index);
     error ProviderNotFoundError(string providerName);
 
-    function verifyToken(string memory providerName_, bytes memory token_) external view returns (bool);
+    function verifyToken(string memory providerName_, string memory headerJson, string memory payloadJson, bytes memory signature, string memory subject) external view returns (bool);
     function updateProviderPublicKeys(string memory providerName_) external;
     function addProvider(bytes memory providerBytecode_) external;
     function updateProvider(bytes memory providerBytecode_, uint256 providerIndex_) external;
