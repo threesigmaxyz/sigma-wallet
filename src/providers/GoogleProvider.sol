@@ -16,6 +16,7 @@ contract GoogleProvider is Verifier, IProvider, IOracleMessageReceiver {
 
     address internal immutable _providerManager;
     address internal immutable _oracle;
+    address chainlinkToken = 0x779877A7B0D9E8603169DdbD7836e478b4624789; // Sepolia adddr
 
     modifier onlyProviderManager() {
         if (msg.sender != _providerManager) revert OnlyProviderManager(msg.sender);
