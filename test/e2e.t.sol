@@ -68,7 +68,7 @@ contract EndToEnd is Test {
 
         factory = new SigmaWalletFactory(ENTRY_POINT, providerManager);
 
-        aliceWallet = SigmaWallet(payable(factory.getAddress(alice, "aliceGoogleId", 0)));
+        aliceWallet = SigmaWallet(payable(factory.getAddress("aliceGoogleId", 0)));
 
         vm.label(0x0576a174D229E3cFA37253523E645A78A0C91B57, "EntryPoint");
     }
@@ -79,7 +79,7 @@ contract EndToEnd is Test {
         userOperations_[0].sender = address(aliceWallet);
         userOperations_[0].nonce = 0;
         userOperations_[0].initCode =
-            abi.encodePacked(address(factory), abi.encodeCall(factory.createAccount, (alice, "aliceGoogleId", 0)));
+            abi.encodePacked(address(factory), abi.encodeCall(factory.createAccount, ("aliceGoogleId", 0)));
         userOperations_[0].callData;
         userOperations_[0].callGasLimit = 10e6;
         userOperations_[0].verificationGasLimit = 10e6;

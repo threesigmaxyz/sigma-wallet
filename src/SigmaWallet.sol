@@ -24,18 +24,12 @@ contract SigmaWallet is BaseAccount, TokenCallbackHandler, UUPSUpgradeable, Init
     using ECDSA for bytes32;
 
     string public ownerId;
-    address public owner;
     IProviderManager internal immutable _providerManager;
 
     IEntryPoint private immutable _entryPoint;
 
-    event SimpleAccountInitialized(IEntryPoint indexed entryPoint, address indexed owner, string indexed ownerId);
+    event SimpleAccountInitialized(IEntryPoint indexed entryPoint, string indexed ownerId);
     event LogString(string info);
-
-    modifier onlyOwner() {
-        _onlyOwner();
-        _;
-    }
 
     /// @inheritdoc BaseAccount
     function entryPoint() public view virtual override returns (IEntryPoint) {
@@ -51,16 +45,11 @@ contract SigmaWallet is BaseAccount, TokenCallbackHandler, UUPSUpgradeable, Init
         _disableInitializers();
     }
 
-    function _onlyOwner() internal view {
-        //directly from EOA owner, or through the account itself (which gets redirected through execute())
-        require(msg.sender == owner || msg.sender == address(this), "only owner");
-    }
-
     /**
-     * execute a transaction (called directly from owner, or by entryPoint)
+     * execute a transaction (called directly from entryPoint)
      */
     function execute(address dest, uint256 value, bytes calldata func) external {
-        _requireFromEntryPointOrOwner();
+        _requireFromEntryPoint();
         _call(dest, value, func);
     }
 
@@ -68,7 +57,7 @@ contract SigmaWallet is BaseAccount, TokenCallbackHandler, UUPSUpgradeable, Init
      * execute a sequence of transactions
      */
     function executeBatch(address[] calldata dest, bytes[] calldata func) external {
-        _requireFromEntryPointOrOwner();
+        _requireFromEntryPoint();
         require(dest.length == func.length, "wrong array lengths");
         for (uint256 i = 0; i < dest.length; i++) {
             _call(dest[i], 0, func[i]);
@@ -80,19 +69,13 @@ contract SigmaWallet is BaseAccount, TokenCallbackHandler, UUPSUpgradeable, Init
      * a new implementation of SimpleAccount must be deployed with the new EntryPoint address, then upgrading
      * the implementation by calling `upgradeTo()`
      */
-    function initialize(address anOwner, string memory anOwnerid) public virtual initializer {
-        _initialize(anOwner, anOwnerid);
+    function initialize(string memory anOwnerid) public virtual initializer {
+        _initialize(anOwnerid);
     }
 
-    function _initialize(address anOwner, string memory anOwnerid) internal virtual {
-        owner = anOwner;
+    function _initialize(string memory anOwnerid) internal virtual {
         ownerId = anOwnerid;
-        emit SimpleAccountInitialized(_entryPoint, owner, anOwnerid);
-    }
-
-    // Require the function call went through EntryPoint or owner
-    function _requireFromEntryPointOrOwner() internal view {
-        require(msg.sender == address(entryPoint()) || msg.sender == owner, "account: not Owner or EntryPoint");
+        emit SimpleAccountInitialized(_entryPoint, anOwnerid);
     }
 
     /// implement template method of BaseAccount
@@ -148,12 +131,13 @@ contract SigmaWallet is BaseAccount, TokenCallbackHandler, UUPSUpgradeable, Init
      * @param withdrawAddress target to send to
      * @param amount to withdraw
      */
-    function withdrawDepositTo(address payable withdrawAddress, uint256 amount) public onlyOwner {
+    function withdrawDepositTo(address payable withdrawAddress, uint256 amount) public {
+        _requireFromEntryPoint();
         entryPoint().withdrawTo(withdrawAddress, amount);
     }
 
     function _authorizeUpgrade(address newImplementation) internal view override {
         (newImplementation);
-        _onlyOwner();
+        _requireFromEntryPoint();
     }
 }

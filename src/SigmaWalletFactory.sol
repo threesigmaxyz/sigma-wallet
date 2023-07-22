@@ -27,8 +27,8 @@ contract SigmaWalletFactory {
      * Note that during UserOperation execution, this method is called only if the account is not deployed.
      * This method returns an existing account address so that entryPoint.getSenderAddress() would work even after account creation
      */
-    function createAccount(address owner, string memory ownerId, uint256 salt) public returns (SigmaWallet ret) {
-        address addr = getAddress(owner, ownerId, salt);
+    function createAccount(string memory ownerId, uint256 salt) public returns (SigmaWallet ret) {
+        address addr = getAddress(ownerId, salt);
         uint256 codeSize = addr.code.length;
         if (codeSize > 0) {
             return SigmaWallet(payable(addr));
@@ -37,7 +37,7 @@ contract SigmaWalletFactory {
             payable(
                 new ERC1967Proxy{salt : bytes32(salt)}(
                 address(accountImplementation),
-                abi.encodeCall(SigmaWallet.initialize, (owner, ownerId))
+                abi.encodeCall(SigmaWallet.initialize, (ownerId))
                 )
             )
         );
@@ -46,13 +46,13 @@ contract SigmaWalletFactory {
     /**
      * calculate the counterfactual address of this account as it would be returned by createAccount()
      */
-    function getAddress(address owner, string memory ownerId, uint256 salt) public view returns (address) {
+    function getAddress(string memory ownerId, uint256 salt) public view returns (address) {
         return Create2.computeAddress(
             bytes32(salt),
             keccak256(
                 abi.encodePacked(
                     type(ERC1967Proxy).creationCode,
-                    abi.encode(address(accountImplementation), abi.encodeCall(SigmaWallet.initialize, (owner, ownerId)))
+                    abi.encode(address(accountImplementation), abi.encodeCall(SigmaWallet.initialize, (ownerId)))
                 )
             )
         );
