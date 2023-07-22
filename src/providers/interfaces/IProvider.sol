@@ -19,7 +19,11 @@ interface IProvider {
         string memory subject
     ) external view returns (bool);
 
-    function requestPublicKeysUpdate() external;
+
+    function requestPublicKeysUpdate(
+        string calldata source,
+        uint32 gasLimit
+    ) external returns (bytes32);
 
     function name() external view returns (string memory);
 

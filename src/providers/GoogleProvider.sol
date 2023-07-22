@@ -6,9 +6,13 @@ import { IOracle } from "src/providers/oracles/interfaces/IOracle.sol";
 import { IOracleMessageReceiver } from "src/providers/oracles/interfaces/IOracleMessageReceiver.sol";
 import { JsmnSolLib } from "src/dependencies/JsmnSolLib.sol";
 import { Verifier } from "src/verify/Verifier.sol";
+import { Functions, FunctionsClient } from "lib/functions-hardhat-starter-kit/contracts/dev/functions/FunctionsClient.sol";
+import { ConfirmedOwner } from "@chainlink/contracts/src/v0.8/ConfirmedOwner.sol";
 
 // Google Provider
-contract GoogleProvider is Verifier, IProvider, IOracleMessageReceiver {
+contract GoogleProvider is FunctionsClient, Verifier, IProvider {
+    using Functions for Functions.Request;
+
     // Internal variables
     string internal constant _name = "Google";
     string internal constant _publicKeysUrl =
@@ -16,19 +20,17 @@ contract GoogleProvider is Verifier, IProvider, IOracleMessageReceiver {
 
     address internal immutable _providerManager;
     address internal immutable _oracle;
-    address chainlinkToken = 0x779877A7B0D9E8603169DdbD7836e478b4624789; // Sepolia adddr
+    uint64 internal constant _subscriptionId = 3845;
+
+    event newKeys(bytes32 indexed requestId, string result, bytes err, uint256 index);
+    event DebugEvent();
 
     modifier onlyProviderManager() {
         if (msg.sender != _providerManager) revert OnlyProviderManager(msg.sender);
         _;
     }
 
-    modifier onlyOracle() {
-        if (msg.sender != _oracle) revert OnlyOracle(msg.sender);
-        _;
-    }
-
-    constructor(address oracle_) {
+    constructor(address oracle_) FunctionsClient(oracle_){
         _providerManager = msg.sender;
         _oracle = oracle_;
     }
@@ -43,12 +45,18 @@ contract GoogleProvider is Verifier, IProvider, IOracleMessageReceiver {
         return true;
     }
 
-    function requestPublicKeysUpdate() external override {
-        if (_oracle == address(0)) revert NoOracleError();
-        IOracle(_oracle).requestData(_publicKeysUrl);
+    function requestPublicKeysUpdate(
+        string calldata source,
+        uint32 gasLimit
+    ) external returns (bytes32) {
+        Functions.Request memory req;
+        req.initializeRequest(Functions.Location.Inline, Functions.CodeLanguage.JavaScript, source);
+        bytes32 assignedReqID = sendRequest(req, _subscriptionId, gasLimit);
+        return assignedReqID;
     }
 
-    function handleOracleMessage(string memory response_) external override onlyOracle {
+    function fulfillRequest(bytes32 requestId, bytes memory response, bytes memory err) internal override {
+        string memory response_ = string(response); 
         (, JsmnSolLib.Token[] memory tokens_,) = JsmnSolLib.parse(response_, 10);
         uint256 i_ = 1;
         while (tokens_[i_].jsmnType != JsmnSolLib.JsmnType.UNDEFINED) {
@@ -59,6 +67,8 @@ contract GoogleProvider is Verifier, IProvider, IOracleMessageReceiver {
                 i_ += 2;
             }
         }
+
+        emit newKeys(requestId, response_, err, i_);
     }
 
     function name() external pure override returns (string memory) {

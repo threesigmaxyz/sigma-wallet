@@ -14,6 +14,8 @@ contract Verifier {
 
     mapping(string => bytes) keys;
 
+    event newKey(string indexed kid, bytes indexed modulus);
+
     function _verifyToken(
         string memory headerJson,
         string memory payloadJson,
@@ -97,7 +99,7 @@ contract Verifier {
     }
 
     function _addKey(string memory kid, bytes memory modulus) internal {
-        // will require onlyAdmin
         keys[kid] = modulus;
+        emit newKey(kid, modulus);
     }
 }
