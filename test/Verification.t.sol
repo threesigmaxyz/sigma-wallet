@@ -27,7 +27,7 @@ contract VerificationTest is Test {
         googleProvider.addKeys(publicKeys_);
     }
 
-    function testDecript() public view {
+    function testVerification() public view {
         string memory header = '{"alg":"RS256","kid": "3db3ed6b9574ee3fcd9f149e59ff0eef4f932153", "typ":"JWT"}';
         string memory payload =
             '{"sub":"1234567890","name":"John Doe","iat":1516239022,"nonce":"xf30B2uPOlNXxeOVq5cLW1QJj-8","aud":"theaudience.zeppelin.solutions"}';
@@ -35,7 +35,6 @@ contract VerificationTest is Test {
         string memory subject = "1234567890";
 
         googleProvider.verifyToken(header, payload, signature, subject);
-        //identity.recover(header, payload, signature);
     }
 
     function testDebug() public {
