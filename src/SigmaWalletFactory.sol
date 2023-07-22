@@ -6,7 +6,7 @@ import "@openzeppelin/contracts/proxy/ERC1967/ERC1967Proxy.sol";
 
 import { IProviderManager } from "./providers/interfaces/IProviderManager.sol";
 
-import "./SuperAccount.sol";
+import "./SigmaWallet.sol";
 
 /**
  * A sample factory contract for SimpleAccount
@@ -14,11 +14,11 @@ import "./SuperAccount.sol";
  * The factory's createAccount returns the target account address even if it is already installed.
  * This way, the entryPoint.getSenderAddress() can be called either before or after the account is created.
  */
-contract SuperAccountFactory {
-    SuperAccount public immutable accountImplementation;
+contract SigmaWalletFactory {
+    SigmaWallet public immutable accountImplementation;
 
     constructor(IEntryPoint _entryPoint, IProviderManager providerManager_) {
-        accountImplementation = new SuperAccount(_entryPoint, providerManager_);
+        accountImplementation = new SigmaWallet(_entryPoint, providerManager_);
     }
 
     /**
@@ -27,17 +27,17 @@ contract SuperAccountFactory {
      * Note that during UserOperation execution, this method is called only if the account is not deployed.
      * This method returns an existing account address so that entryPoint.getSenderAddress() would work even after account creation
      */
-    function createAccount(address owner, string memory ownerId, uint256 salt) public returns (SuperAccount ret) {
+    function createAccount(address owner, string memory ownerId, uint256 salt) public returns (SigmaWallet ret) {
         address addr = getAddress(owner, ownerId, salt);
         uint256 codeSize = addr.code.length;
         if (codeSize > 0) {
-            return SuperAccount(payable(addr));
+            return SigmaWallet(payable(addr));
         }
-        ret = SuperAccount(
+        ret = SigmaWallet(
             payable(
                 new ERC1967Proxy{salt : bytes32(salt)}(
                 address(accountImplementation),
-                abi.encodeCall(SuperAccount.initialize, (owner, ownerId))
+                abi.encodeCall(SigmaWallet.initialize, (owner, ownerId))
                 )
             )
         );
@@ -52,7 +52,7 @@ contract SuperAccountFactory {
             keccak256(
                 abi.encodePacked(
                     type(ERC1967Proxy).creationCode,
-                    abi.encode(address(accountImplementation), abi.encodeCall(SuperAccount.initialize, (owner, ownerId)))
+                    abi.encode(address(accountImplementation), abi.encodeCall(SigmaWallet.initialize, (owner, ownerId)))
                 )
             )
         );

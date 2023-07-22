@@ -20,7 +20,7 @@ import { IProviderManager } from "./providers/interfaces/IProviderManager.sol";
  *  has execute, eth handling methods
  *  has a single signer that can send requests through the entryPoint.
  */
-contract SuperAccount is BaseAccount, TokenCallbackHandler, UUPSUpgradeable, Initializable {
+contract SigmaWallet is BaseAccount, TokenCallbackHandler, UUPSUpgradeable, Initializable {
     using ECDSA for bytes32;
 
     string public ownerId;

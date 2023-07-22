@@ -8,8 +8,8 @@ import { ECDSA } from "@openzeppelin/contracts/utils/cryptography/ECDSA.sol";
 import { IEntryPoint } from "@account-abstraction/contracts/interfaces/IEntryPoint.sol";
 import { UserOperationLib, UserOperation } from "@account-abstraction/contracts/interfaces/UserOperation.sol";
 
-import { SuperAccount } from "src/SuperAccount.sol";
-import { SuperAccountFactory } from "src/SuperAccountFactory.sol";
+import { SigmaWallet } from "src/SigmaWallet.sol";
+import { SigmaWalletFactory } from "src/SigmaWalletFactory.sol";
 
 import { IProvider } from "src/providers/interfaces/IProvider.sol";
 import { IProviderManager } from "src/providers/interfaces/IProviderManager.sol";
@@ -19,14 +19,14 @@ import { ProviderManager } from "src/providers/ProviderManager.sol";
 // https://github.com/dawnwallet/erc4337-wallet/blob/master/test/fork/e2eDeployAndPaymaster.t.sol
 contract EndToEnd is Test {
     IEntryPoint public constant ENTRY_POINT = IEntryPoint(0x0576a174D229E3cFA37253523E645A78A0C91B57);
-    SuperAccountFactory public factory;
+    SigmaWalletFactory public factory;
 
     address public alice;
     uint256 public constant ALICE_PK = 20;
 
     address public governor;
 
-    SuperAccount public aliceWallet;
+    SigmaWallet public aliceWallet;
 
     IProvider public google;
     IProviderManager public providerManager;
@@ -66,9 +66,9 @@ contract EndToEnd is Test {
         bundler = makeAddr("bundler");
         deal(bundler, 1 ether);
 
-        factory = new SuperAccountFactory(ENTRY_POINT, providerManager);
+        factory = new SigmaWalletFactory(ENTRY_POINT, providerManager);
 
-        aliceWallet = SuperAccount(payable(factory.getAddress(alice, "aliceGoogleId", 0)));
+        aliceWallet = SigmaWallet(payable(factory.getAddress(alice, "aliceGoogleId", 0)));
 
         vm.label(0x0576a174D229E3cFA37253523E645A78A0C91B57, "EntryPoint");
     }
@@ -91,7 +91,8 @@ contract EndToEnd is Test {
         //bytes32 userOpHash_ = ENTRY_POINT.getUserOpHash(userOperations_[0]);
         string memory providerName_ = "Google";
         string memory headerJson_ = '{"alg":"RS256","kid": "3db3ed6b9574ee3fcd9f149e59ff0eef4f932153", "typ":"JWT"}';
-        string memory payloadJson_ = '{"sub":"aliceGoogleId","name":"John Doe","iat":1516239022,"nonce":"xf30B2uPOlNXxeOVq5cLW1QJj-8","aud":"theaudience.zeppelin.solutions"}';
+        string memory payloadJson_ =
+            '{"sub":"aliceGoogleId","name":"John Doe","iat":1516239022,"nonce":"xf30B2uPOlNXxeOVq5cLW1QJj-8","aud":"theaudience.zeppelin.solutions"}';
         bytes memory signature = "0x123456789abcd";
         bytes memory data = abi.encode(providerName_, headerJson_, payloadJson_, signature);
         emit LogBytes(signature);
