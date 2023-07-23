@@ -171,7 +171,7 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="sigmawallet"><a class="header" href="#sigmawallet">SigmaWallet</a></h1>
-<p><a href="https://github.com/threesigmaxyz/sigma-wallet/blob/3363cbcbb9ec35ffd93a6f30954ff418e0bbb54b/src/SigmaWallet.sol">Git Source</a></p>
+<p><a href="https://github.com/threesigmaxyz/sigma-wallet/blob/90e6adb7cb468b15742616d3b33fb09fa2bac24a/src/SigmaWallet.sol">Git Source</a></p>
 <p><strong>Inherits:</strong>
 BaseAccount, TokenCallbackHandler, UUPSUpgradeable, Initializable</p>
 <p>minimal account.
@@ -252,6 +252,14 @@ the implementation by calling <code>upgradeTo()</code></em></p>
 </div>
 <h3 id="_authorizeupgrade"><a class="header" href="#_authorizeupgrade">_authorizeUpgrade</a></h3>
 <pre><code class="language-solidity">function _authorizeUpgrade(address newImplementation) internal view override;
+</code></pre>
+<h3 id="_verifytoken"><a class="header" href="#_verifytoken">_verifyToken</a></h3>
+<pre><code class="language-solidity">function _verifyToken(
+    string memory headerJson,
+    string memory payloadJson,
+    bytes memory signature,
+    string memory subject
+) internal view;
 </code></pre>
 <h2 id="events"><a class="header" href="#events">Events</a></h2>
 <h3 id="simpleaccountinitialized"><a class="header" href="#simpleaccountinitialized">SimpleAccountInitialized</a></h3>
