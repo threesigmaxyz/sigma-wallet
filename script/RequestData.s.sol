@@ -12,7 +12,7 @@ import { FunctionsConsumer } from "lib/functions-hardhat-starter-kit/contracts/F
 /// https://book.getfoundry.sh/tutorials/solidity-scripting?highlight=scripts#solidity-scripting
 contract RequestData is Script {
 
-    address google = 0x9eAF93320EDd1De220D6C1744D4a9D0774A1F1Af; // NEEDS UPDATE
+    address google = 0x9eAF93320EDd1De220D6C1744D4a9D0774A1F1Af;
     address functionsConsumer = 0xC3C14Ea1f95b62e5eeA48897cf14A8Bd06A43448;
     uint64 subscriptionId = 566;
 
