@@ -12,7 +12,7 @@ contract VerificationTest is Test {
 
     function setUp() public {
         // Set up Provider
-        googleProvider = new GoogleProvider(oracle);
+        googleProvider = new GoogleProvider(oracle, uint64(0));
 
         // Set up keys
         string[] memory kids = new string[](2);

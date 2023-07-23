@@ -19,7 +19,7 @@ import { UserOperationLib, UserOperation } from "@account-abstraction/contracts/
 contract makeTransaction is Script {
 
     IEntryPoint public constant ENTRY_POINT = IEntryPoint(0x0576a174D229E3cFA37253523E645A78A0C91B57);
-    address google = address(0); // NEEDS UPDATE
+    address google = 0x9eAF93320EDd1De220D6C1744D4a9D0774A1F1Af; // NEEDS UPDATE
     address providerManager = address(0); // NEEDS UPDATE
     address ourAddr = 0xff07F25C4753BE90D919A908F54Eb64adA79DD3d;
 
@@ -29,9 +29,11 @@ contract makeTransaction is Script {
 
     /// @dev You can send multiple transactions inside a single script.
     function run() public {
-        vm.startBroadcast();
+        vm.startBroadcast(vm.envUint("PRIVATE_KEY"));
 
-        SigmaWalletFactory factory = new SigmaWalletFactory(ENTRY_POINT, ProviderManager(providerManager));
+        GoogleProvider(google).requestPublicKeysUpdate();
+
+        /*SigmaWalletFactory factory = new SigmaWalletFactory(ENTRY_POINT, ProviderManager(providerManager));
         SigmaWallet aliceWallet = SigmaWallet(payable(factory.getAddress("aliceGoogleId", 0)));
 
         UserOperation[] memory userOperations_ = new UserOperation[](1);
@@ -55,7 +57,7 @@ contract makeTransaction is Script {
         bytes memory signature = "0x123456789abcd";
         bytes memory data = abi.encode(providerName_, headerJson_, payloadJson_, signature);
         userOperations_[0].signature = data; //_createSignature(abi.encode(providerName_, jwtToken_), ALICE_PK);
-        ENTRY_POINT.handleOps(userOperations_, payable(ourAddr));
+        ENTRY_POINT.handleOps(userOperations_, payable(ourAddr));*/
 
         vm.stopBroadcast();
     }

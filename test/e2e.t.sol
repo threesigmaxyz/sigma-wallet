@@ -44,7 +44,7 @@ contract EndToEnd is Test {
         providerManager = new ProviderManager();
 
         // Set up provider
-        google = new GoogleProvider(address(0x0)); // TODO: send oracle in constructor
+        google = new GoogleProvider(address(0x0), uint64(566)); // TODO: send oracle in constructor
         // Set up provider keys
         string[] memory kids = new string[](2);
         bytes[] memory modulus = new bytes[](2);

@@ -20,10 +20,7 @@ interface IProvider {
     ) external view returns (bool);
 
 
-    function requestPublicKeysUpdate(
-        string calldata source,
-        uint32 gasLimit
-    ) external returns (bytes32);
+    function requestPublicKeysUpdate() external;
 
     function name() external view returns (string memory);
 

@@ -14,6 +14,9 @@ import { GoogleProvider } from "src/providers/GoogleProvider.sol";
 import { ProviderManager } from "src/providers/ProviderManager.sol";
 import { ChainlinkOracle } from "src/providers/oracles/ChainlinkOracle.sol";
 
+import { FunctionsConsumerMock } from "./ConsumerMock.sol";
+
+
 // https://github.com/dawnwallet/erc4337-wallet/blob/master/test/fork/e2eDeployAndPaymaster.t.sol
 contract Chainlink is Test {
     IEntryPoint public constant ENTRY_POINT = IEntryPoint(0x0576a174D229E3cFA37253523E645A78A0C91B57);
@@ -33,7 +36,7 @@ contract Chainlink is Test {
     IProviderManager public providerManager;
 
     address public bundler;
-    address public oracle; // Sepolia addr: 0x649a2C205BE7A3d5e99206CEEFF30c794f0E31EC
+    address public functionsConsumer;
 
     event LogBytes(bytes info);
     event LogBytes32(bytes32 info);
@@ -43,22 +46,18 @@ contract Chainlink is Test {
         vm.createSelectFork(vm.envString("RPC_URL_SEPOLIA"));
 
         vm.prank(governor);
-        oracle = address(new ChainlinkOracle());
-
-        vm.prank(governor);
         providerManager = new ProviderManager();
 
+        vm.prank(governor);
+        functionsConsumer = address(new FunctionsConsumerMock());
+
         // Set up provider
-        google = new GoogleProvider(oracle);
+        google = new GoogleProvider(functionsConsumer, uint64(566));
         vm.prank(governor);
         providerManager.addProviderSimple(google, "Google");
 
         // Set up keys
-        bytes32 requestId = google.requestPublicKeysUpdate(string(encodedCode), 100000);
-        bytes memory response = hex"5b2262326466663738613062646435613032323132303633343939643737656634646565643166363562222c2231346562386133623638333766363135386565623630373665366138633432386135663632613762225d";
-        bytes memory err = "";
-        vm.prank(oracle);
-        google.handleOracleFulfillment(requestId, response, err);
+        google.requestPublicKeysUpdate();
 
         alice = vm.addr(ALICE_PK);
         vm.label(alice, "alice");

@@ -22,7 +22,7 @@ interface IProviderManager {
         bytes memory signature,
         string memory subject
     ) external view returns (bool);
-    function updateProviderPublicKeys(string memory providerName_, string calldata source, uint32 gasLimit) external;
+    function updateProviderPublicKeys(string memory providerName_) external;
     function addProvider(bytes memory providerBytecode_) external;
     function updateProvider(bytes memory providerBytecode_, uint256 providerIndex_) external;
     function getProviders() external view returns (Provider[] memory providers_);

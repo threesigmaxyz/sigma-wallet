@@ -11,7 +11,8 @@ import { ProviderManager } from "src/providers/ProviderManager.sol";
 /// https://book.getfoundry.sh/tutorials/solidity-scripting?highlight=scripts#solidity-scripting
 contract Deploy is Script {
 
-    address chainlinkOracle = 0x649a2C205BE7A3d5e99206CEEFF30c794f0E31EC;
+    address functionsConsumer = 0xC3C14Ea1f95b62e5eeA48897cf14A8Bd06A43448;
+    uint64 subscriptionId = 566;
 
     function setUp() public {
         // solhint-disable-previous-line no-empty-blocks
@@ -19,10 +20,10 @@ contract Deploy is Script {
 
     /// @dev You can send multiple transactions inside a single script.
     function run() public {
-        vm.startBroadcast();
+        vm.startBroadcast(vm.envUint("PRIVATE_KEY"));
 
         ProviderManager providerManager = new ProviderManager();
-        GoogleProvider google = new GoogleProvider(chainlinkOracle);
+        GoogleProvider google = new GoogleProvider(functionsConsumer, subscriptionId);
         providerManager.addProviderSimple(google, "Google");
 
         vm.stopBroadcast();

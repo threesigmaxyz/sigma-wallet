@@ -4,8 +4,8 @@ test            = 'test'    # The test directory
 out             = 'out'     # The ouput directory
 libs            = ['lib']   # A list of library directories
 solc_version    = '0.8.20'   # Override for the solc version (setting this ignores `auto_detect_solc`)
-optimizer       = false     # Enable or disable the solc optimizer
-optimizer_runs  = 200       # The number of optimizer runs
+optimizer       = true     # Enable or disable the solc optimizer
+optimizer_runs  = 1       # The number of optimizer runs
 verbosity       = 3         # The verbosity of tests
 chainId         = 1         # The chain for tests
 

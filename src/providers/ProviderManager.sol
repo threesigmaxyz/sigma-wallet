@@ -30,8 +30,8 @@ contract ProviderManager is IProviderManager {
         return provider_.verifyToken(headerJson, payloadJson, signature, subject);
     }
 
-    function updateProviderPublicKeys(string memory providerName_, string calldata source, uint32 gasLimit) external override {
-        _providers[providerName_].requestPublicKeysUpdate(source, gasLimit);
+    function updateProviderPublicKeys(string memory providerName_) external override {
+        _providers[providerName_].requestPublicKeysUpdate();
     }
 
     // Governance functions
