@@ -172,51 +172,16 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="sigma-wallet"><a class="header" href="#sigma-wallet">sigma-wallet</a></h1>
-<h1 id="foundry-template"><a class="header" href="#foundry-template">Foundry Template <a href="https://github.com/threesigmaxyz/foundry-template/actions"><img src="https://github.com/threesigmaxyz/foundry-template/actions/workflows/ci.yml/badge.svg" alt="Github Actions" /></a> <a href="https://getfoundry.sh/"><img src="https://img.shields.io/badge/Built%20with-Foundry-FFDB1C.svg" alt="Foundry" /></a> <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="License: MIT" /></a></a></h1>
-<p>A Foundry-based template for developing Solidity smart contracts.</p>
-<h2 id="whats-inside"><a class="header" href="#whats-inside">What's Inside</a></h2>
+<h2 id="descriptionm"><a class="header" href="#descriptionm">Descriptionm</a></h2>
+<p>This repo implements the smart contracts for the sigma wallet project developed at ETHGlobalParis hackathob.
+The main contracts developed are:</p>
 <ul>
-<li><a href="https://github.com/foundry-rs/foundry/blob/master/forge">Forge</a>: compile, test, fuzz, debug and deploy smart contracts</li>
-<li><a href="https://github.com/foundry-rs/forge-std">Forge Std</a>: collection of helpful contracts and cheatcodes for testing</li>
-<li><a href="https://github.com/foundry-rs/foundry/tree/master/anvil">Anvil</a>: local Ethereum node, akin to Ganache, Hardhat Network.</li>
+<li>'ProviderManager.sol': contract that manages the different providers and its public keys, it allows for the addition of providers (like for example GoogleProvider) as an authentication method.</li>
+<li>'GoogleProvider.sol': 'IProvider.sol' implementation for Google OAuth, allowing the user to log-in with their Google account.</li>
+<li>'SigmaWallet.sol': Wallet contract, can only be accessed by the entrypoint, validates signatures and executes transactions</li>
+<li>'SigmaWalletFactory.sol': contract that handles the creation of new wallets in case the user does not have one</li>
 </ul>
-<h2 id="getting-started"><a class="header" href="#getting-started">Getting Started</a></h2>
-<p>Click the <a href="https://github.com/threesigmaxyz/foundry-template/generate"><code>Use this template</code></a> button at the top of the page to create a new repository with this repo as the initial state.</p>
-<p>Or, if you prefer to install the template manually:</p>
-<pre><code class="language-sh">forge init my-project --template https://github.com/threesigmaxyz/foundry-template
-cd my-project
-make install
-</code></pre>
-<p>If this is your first time with Foundry, check out the <a href="https://github.com/foundry-rs/foundry#installation">installation</a> instructions.</p>
-<h2 id="blueprint"><a class="header" href="#blueprint">Blueprint</a></h2>
-<pre><code class="language-ml">lib
-├─ forge-std — https://github.com/foundry-rs/forge-std
-├─ openzeppelin-contracts — https://github.com/OpenZeppelin/openzeppelin-contracts
-scripts
-├─ 01_Deploy.s.sol — Simple Deployment Script
-src
-├─ Greeter.sol — A Greeter Contract
-test
-└─ Greeter.t.sol — Minimal Tests
-</code></pre>
-<h2 id="features"><a class="header" href="#features">Features</a></h2>
-<p>This template builds upon the frameworks and libraries mentioned above, so for details about their specific features, please consult their respective documentations.</p>
-<p>For example, for Foundry, you can refer to the <a href="https://book.getfoundry.sh/">Foundry Book</a>. You might be in particular interested in reading the <a href="https://book.getfoundry.sh/forge/writing-tests.html">Writing Tests</a> guide.</p>
-<h3 id="github-actions"><a class="header" href="#github-actions">GitHub Actions</a></h3>
-<p>This template comes with GitHub Actions pre-configured. Your contracts will be linted and tested on every push and pull
-request made to the <code>main</code> branch.</p>
-<p>You can edit the CI script in <a href="./.github/workflows/ci.yml">.github/workflows/ci.yml</a>.</p>
-<h3 id="conventional-commits"><a class="header" href="#conventional-commits">Conventional Commits</a></h3>
-<p>This template enforces the <a href="https://www.conventionalcommits.org/">Conventional Commits</a> standard for git commit messages.
-This is a lightweight convention that creates an explicit commit history, which makes it easier to write automated
-tools on top of.</p>
-<h3 id="sensible-defaults"><a class="header" href="#sensible-defaults">Sensible Defaults</a></h3>
-<p>This template comes with sensible default configurations in the following files:</p>
-<pre><code class="language-text">├── .gitignore
-├── foundry.toml
-└── remappings.txt
-└── slither.config.json
-</code></pre>
+<p>These contracts receive interactions from the front/backend and execute them.</p>
 <h2 id="usage"><a class="header" href="#usage">Usage</a></h2>
 <p>Here's a list of the most frequently needed commands.</p>
 <h3 id="build"><a class="header" href="#build">Build</a></h3>
@@ -263,15 +228,8 @@ tools on top of.</p>
 <pre><code>make tests
 </code></pre>
 <p>Alternatively, you can run specific tests as detailed in this <a href="https://book.getfoundry.sh/forge/tests">guide</a>.</p>
-<h3 id="security"><a class="header" href="#security">Security</a></h3>
-<p>This repository includes a Slither configuration, a popular static analysis tool from <a href="https://www.trailofbits.com/">Trail of Bits</a>. To use Slither, you'll first need to <a href="https://www.python.org/downloads/">install Python</a> and <a href="https://github.com/crytic/slither#how-to-install">install Slither</a>.</p>
-<p>Then, you can run:</p>
-<pre><code class="language-sh">make slither
-</code></pre>
-<p>And analyse the output of the tool.</p>
 <h1 id="about-us"><a class="header" href="#about-us">About Us</a></h1>
 <p><a href="https://threesigma.xyz/">Three Sigma</a> is a venture builder firm focused on blockchain engineering, research, and investment. Our mission is to advance the adoption of blockchain technology and contribute towards the healthy development of the Web3 space.</p>
-<p>If you are interested in joining our team, please contact us <a href="mailto:info@threesigma.xyz">here</a>.</p>
 <hr />
 <p align="center">
   <img src="https://threesigma.xyz/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fthree-sigma-labs-research-capital-white.0f8e8f50.png&w=2048&q=75" width="75%" />
@@ -281,7 +239,7 @@ tools on top of.</p>
 <li><a href="src/dependencies/JsmnSolLib.sol/library.JsmnSolLib.html">JsmnSolLib</a></li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="jsmnsollib"><a class="header" href="#jsmnsollib">JsmnSolLib</a></h1>
-<p><a href="https://github.com/threesigmaxyz/sigma-wallet/blob/74ee56aba10463b1e8886e93c87dc94b6989d6f4/src/dependencies/JsmnSolLib.sol">Git Source</a></p>
+<p><a href="https://github.com/threesigmaxyz/sigma-wallet/blob/4094dceb2460f2cb1bf6c4d050eebea520591c70/src/dependencies/JsmnSolLib.sol">Git Source</a></p>
 <h2 id="state-variables"><a class="header" href="#state-variables">State Variables</a></h2>
 <h3 id="return_success"><a class="header" href="#return_success">RETURN_SUCCESS</a></h3>
 <pre><code class="language-solidity">uint256 constant RETURN_SUCCESS = 0;
@@ -376,7 +334,7 @@ tools on top of.</p>
 <li><a href="src/providers/interfaces/IProviderManager.sol/interface.IProviderManager.html">IProviderManager</a></li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="iprovider"><a class="header" href="#iprovider">IProvider</a></h1>
-<p><a href="https://github.com/threesigmaxyz/sigma-wallet/blob/74ee56aba10463b1e8886e93c87dc94b6989d6f4/src/providers/interfaces/IProvider.sol">Git Source</a></p>
+<p><a href="https://github.com/threesigmaxyz/sigma-wallet/blob/4094dceb2460f2cb1bf6c4d050eebea520591c70/src/providers/interfaces/IProvider.sol">Git Source</a></p>
 <h2 id="functions-1"><a class="header" href="#functions-1">Functions</a></h2>
 <h3 id="verifytoken"><a class="header" href="#verifytoken">verifyToken</a></h3>
 <pre><code class="language-solidity">function verifyToken(string memory headerJson, string memory payloadJson, bytes memory signature, string memory subject)
@@ -414,7 +372,7 @@ tools on top of.</p>
 }
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="iprovidermanager"><a class="header" href="#iprovidermanager">IProviderManager</a></h1>
-<p><a href="https://github.com/threesigmaxyz/sigma-wallet/blob/74ee56aba10463b1e8886e93c87dc94b6989d6f4/src/providers/interfaces/IProviderManager.sol">Git Source</a></p>
+<p><a href="https://github.com/threesigmaxyz/sigma-wallet/blob/4094dceb2460f2cb1bf6c4d050eebea520591c70/src/providers/interfaces/IProviderManager.sol">Git Source</a></p>
 <h2 id="functions-2"><a class="header" href="#functions-2">Functions</a></h2>
 <h3 id="verifytoken-1"><a class="header" href="#verifytoken-1">verifyToken</a></h3>
 <pre><code class="language-solidity">function verifyToken(
@@ -471,7 +429,7 @@ tools on top of.</p>
 <li><a href="src/providers/oracles/ChainlinkOracle.sol/contract.ChainlinkOracle.html">ChainlinkOracle</a></li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="chainlinkoracle"><a class="header" href="#chainlinkoracle">ChainlinkOracle</a></h1>
-<p><a href="https://github.com/threesigmaxyz/sigma-wallet/blob/74ee56aba10463b1e8886e93c87dc94b6989d6f4/src/providers/oracles/ChainlinkOracle.sol">Git Source</a></p>
+<p><a href="https://github.com/threesigmaxyz/sigma-wallet/blob/4094dceb2460f2cb1bf6c4d050eebea520591c70/src/providers/oracles/ChainlinkOracle.sol">Git Source</a></p>
 <h2 id="functions-3"><a class="header" href="#functions-3">Functions</a></h2>
 <h3 id="constructor"><a class="header" href="#constructor">constructor</a></h3>
 <pre><code class="language-solidity">constructor();
@@ -483,7 +441,7 @@ tools on top of.</p>
 <pre><code class="language-solidity">function getRegistry() external view returns (address);
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="googleprovider"><a class="header" href="#googleprovider">GoogleProvider</a></h1>
-<p><a href="https://github.com/threesigmaxyz/sigma-wallet/blob/74ee56aba10463b1e8886e93c87dc94b6989d6f4/src/providers/GoogleProvider.sol">Git Source</a></p>
+<p><a href="https://github.com/threesigmaxyz/sigma-wallet/blob/4094dceb2460f2cb1bf6c4d050eebea520591c70/src/providers/GoogleProvider.sol">Git Source</a></p>
 <p><strong>Inherits:</strong>
 FunctionsClient, <a href="src/providers/GoogleProvider.sol//src/verify/Verifier.sol/contract.Verifier.html">Verifier</a>, <a href="src/providers/GoogleProvider.sol//src/providers/interfaces/IProvider.sol/interface.IProvider.html">IProvider</a></p>
 <h2 id="state-variables-1"><a class="header" href="#state-variables-1">State Variables</a></h2>
@@ -537,7 +495,7 @@ FunctionsClient, <a href="src/providers/GoogleProvider.sol//src/verify/Verifier.
 <pre><code class="language-solidity">event DebugEvent();
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="providermanager"><a class="header" href="#providermanager">ProviderManager</a></h1>
-<p><a href="https://github.com/threesigmaxyz/sigma-wallet/blob/74ee56aba10463b1e8886e93c87dc94b6989d6f4/src/providers/ProviderManager.sol">Git Source</a></p>
+<p><a href="https://github.com/threesigmaxyz/sigma-wallet/blob/4094dceb2460f2cb1bf6c4d050eebea520591c70/src/providers/ProviderManager.sol">Git Source</a></p>
 <p><strong>Inherits:</strong>
 <a href="src/providers/ProviderManager.sol//src/providers/interfaces/IProviderManager.sol/interface.IProviderManager.html">IProviderManager</a></p>
 <h2 id="state-variables-2"><a class="header" href="#state-variables-2">State Variables</a></h2>
@@ -598,7 +556,7 @@ FunctionsClient, <a href="src/providers/GoogleProvider.sol//src/verify/Verifier.
 <li><a href="src/verify/Verifier.sol/contract.Verifier.html">Verifier</a></li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="base64"><a class="header" href="#base64">Base64</a></h1>
-<p><a href="https://github.com/threesigmaxyz/sigma-wallet/blob/74ee56aba10463b1e8886e93c87dc94b6989d6f4/src/verify/Base64.sol">Git Source</a></p>
+<p><a href="https://github.com/threesigmaxyz/sigma-wallet/blob/4094dceb2460f2cb1bf6c4d050eebea520591c70/src/verify/Base64.sol">Git Source</a></p>
 <h2 id="state-variables-3"><a class="header" href="#state-variables-3">State Variables</a></h2>
 <h3 id="base64stdchars"><a class="header" href="#base64stdchars">base64stdchars</a></h3>
 <pre><code class="language-solidity">bytes private constant base64stdchars = &quot;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/&quot;;
@@ -617,7 +575,7 @@ FunctionsClient, <a href="src/providers/GoogleProvider.sol//src/verify/Verifier.
     returns (bytes1 b0, bytes1 b1, bytes1 b2, bytes1 b3);
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="jsmnsollib2"><a class="header" href="#jsmnsollib2">JsmnSolLib2</a></h1>
-<p><a href="https://github.com/threesigmaxyz/sigma-wallet/blob/74ee56aba10463b1e8886e93c87dc94b6989d6f4/src/verify/JsmnSolLib2.sol">Git Source</a></p>
+<p><a href="https://github.com/threesigmaxyz/sigma-wallet/blob/4094dceb2460f2cb1bf6c4d050eebea520591c70/src/verify/JsmnSolLib2.sol">Git Source</a></p>
 <h2 id="state-variables-4"><a class="header" href="#state-variables-4">State Variables</a></h2>
 <h3 id="return_success-1"><a class="header" href="#return_success-1">RETURN_SUCCESS</a></h3>
 <pre><code class="language-solidity">uint256 constant RETURN_SUCCESS = 0;
@@ -700,7 +658,7 @@ FunctionsClient, <a href="src/providers/GoogleProvider.sol//src/verify/Verifier.
 }
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="solrsaverify"><a class="header" href="#solrsaverify">SolRsaVerify</a></h1>
-<p><a href="https://github.com/threesigmaxyz/sigma-wallet/blob/74ee56aba10463b1e8886e93c87dc94b6989d6f4/src/verify/SolRsaVerify.sol">Git Source</a></p>
+<p><a href="https://github.com/threesigmaxyz/sigma-wallet/blob/4094dceb2460f2cb1bf6c4d050eebea520591c70/src/verify/SolRsaVerify.sol">Git Source</a></p>
 <h2 id="functions-8"><a class="header" href="#functions-8">Functions</a></h2>
 <h3 id="memcpy"><a class="header" href="#memcpy">memcpy</a></h3>
 <pre><code class="language-solidity">function memcpy(uint256 _dest, uint256 _src, uint256 _len) internal pure;
@@ -764,7 +722,7 @@ PS is padding filled with 0xff</p>
     returns (uint256);
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="stringutils"><a class="header" href="#stringutils">StringUtils</a></h1>
-<p><a href="https://github.com/threesigmaxyz/sigma-wallet/blob/74ee56aba10463b1e8886e93c87dc94b6989d6f4/src/verify/Strings.sol">Git Source</a></p>
+<p><a href="https://github.com/threesigmaxyz/sigma-wallet/blob/4094dceb2460f2cb1bf6c4d050eebea520591c70/src/verify/Strings.sol">Git Source</a></p>
 <h2 id="functions-9"><a class="header" href="#functions-9">Functions</a></h2>
 <h3 id="memcpy-1"><a class="header" href="#memcpy-1">memcpy</a></h3>
 <pre><code class="language-solidity">function memcpy(uint256 dest, uint256 src, uint256 len_) private pure;
@@ -870,7 +828,7 @@ PS is padding filled with 0xff</p>
 }
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="verifier"><a class="header" href="#verifier">Verifier</a></h1>
-<p><a href="https://github.com/threesigmaxyz/sigma-wallet/blob/74ee56aba10463b1e8886e93c87dc94b6989d6f4/src/verify/Verifier.sol">Git Source</a></p>
+<p><a href="https://github.com/threesigmaxyz/sigma-wallet/blob/4094dceb2460f2cb1bf6c4d050eebea520591c70/src/verify/Verifier.sol">Git Source</a></p>
 <h2 id="state-variables-5"><a class="header" href="#state-variables-5">State Variables</a></h2>
 <h3 id="keys"><a class="header" href="#keys">keys</a></h3>
 <pre><code class="language-solidity">mapping(string =&gt; bytes) keys;
@@ -907,7 +865,7 @@ PS is padding filled with 0xff</p>
 <pre><code class="language-solidity">event newKey(string indexed kid, bytes indexed modulus);
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="sigmawallet"><a class="header" href="#sigmawallet">SigmaWallet</a></h1>
-<p><a href="https://github.com/threesigmaxyz/sigma-wallet/blob/74ee56aba10463b1e8886e93c87dc94b6989d6f4/src/SigmaWallet.sol">Git Source</a></p>
+<p><a href="https://github.com/threesigmaxyz/sigma-wallet/blob/4094dceb2460f2cb1bf6c4d050eebea520591c70/src/SigmaWallet.sol">Git Source</a></p>
 <p><strong>Inherits:</strong>
 BaseAccount, TokenCallbackHandler, UUPSUpgradeable, Initializable</p>
 <p>minimal account.
@@ -991,7 +949,7 @@ the implementation by calling <code>upgradeTo()</code></em></p>
 <pre><code class="language-solidity">event LogString(string info);
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="sigmawalletfactory"><a class="header" href="#sigmawalletfactory">SigmaWalletFactory</a></h1>
-<p><a href="https://github.com/threesigmaxyz/sigma-wallet/blob/74ee56aba10463b1e8886e93c87dc94b6989d6f4/src/SigmaWalletFactory.sol">Git Source</a></p>
+<p><a href="https://github.com/threesigmaxyz/sigma-wallet/blob/4094dceb2460f2cb1bf6c4d050eebea520591c70/src/SigmaWalletFactory.sol">Git Source</a></p>
 <p>A sample factory contract for SimpleAccount
 A UserOperations &quot;initCode&quot; holds the address of the factory, and a method call (to createAccount, in this sample factory).
 The factory's createAccount returns the target account address even if it is already installed.

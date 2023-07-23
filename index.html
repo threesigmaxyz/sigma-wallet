@@ -171,51 +171,16 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="sigma-wallet"><a class="header" href="#sigma-wallet">sigma-wallet</a></h1>
-<h1 id="foundry-template"><a class="header" href="#foundry-template">Foundry Template <a href="https://github.com/threesigmaxyz/foundry-template/actions"><img src="https://github.com/threesigmaxyz/foundry-template/actions/workflows/ci.yml/badge.svg" alt="Github Actions" /></a> <a href="https://getfoundry.sh/"><img src="https://img.shields.io/badge/Built%20with-Foundry-FFDB1C.svg" alt="Foundry" /></a> <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="License: MIT" /></a></a></h1>
-<p>A Foundry-based template for developing Solidity smart contracts.</p>
-<h2 id="whats-inside"><a class="header" href="#whats-inside">What's Inside</a></h2>
+<h2 id="descriptionm"><a class="header" href="#descriptionm">Descriptionm</a></h2>
+<p>This repo implements the smart contracts for the sigma wallet project developed at ETHGlobalParis hackathob.
+The main contracts developed are:</p>
 <ul>
-<li><a href="https://github.com/foundry-rs/foundry/blob/master/forge">Forge</a>: compile, test, fuzz, debug and deploy smart contracts</li>
-<li><a href="https://github.com/foundry-rs/forge-std">Forge Std</a>: collection of helpful contracts and cheatcodes for testing</li>
-<li><a href="https://github.com/foundry-rs/foundry/tree/master/anvil">Anvil</a>: local Ethereum node, akin to Ganache, Hardhat Network.</li>
+<li>'ProviderManager.sol': contract that manages the different providers and its public keys, it allows for the addition of providers (like for example GoogleProvider) as an authentication method.</li>
+<li>'GoogleProvider.sol': 'IProvider.sol' implementation for Google OAuth, allowing the user to log-in with their Google account.</li>
+<li>'SigmaWallet.sol': Wallet contract, can only be accessed by the entrypoint, validates signatures and executes transactions</li>
+<li>'SigmaWalletFactory.sol': contract that handles the creation of new wallets in case the user does not have one</li>
 </ul>
-<h2 id="getting-started"><a class="header" href="#getting-started">Getting Started</a></h2>
-<p>Click the <a href="https://github.com/threesigmaxyz/foundry-template/generate"><code>Use this template</code></a> button at the top of the page to create a new repository with this repo as the initial state.</p>
-<p>Or, if you prefer to install the template manually:</p>
-<pre><code class="language-sh">forge init my-project --template https://github.com/threesigmaxyz/foundry-template
-cd my-project
-make install
-</code></pre>
-<p>If this is your first time with Foundry, check out the <a href="https://github.com/foundry-rs/foundry#installation">installation</a> instructions.</p>
-<h2 id="blueprint"><a class="header" href="#blueprint">Blueprint</a></h2>
-<pre><code class="language-ml">lib
-├─ forge-std — https://github.com/foundry-rs/forge-std
-├─ openzeppelin-contracts — https://github.com/OpenZeppelin/openzeppelin-contracts
-scripts
-├─ 01_Deploy.s.sol — Simple Deployment Script
-src
-├─ Greeter.sol — A Greeter Contract
-test
-└─ Greeter.t.sol — Minimal Tests
-</code></pre>
-<h2 id="features"><a class="header" href="#features">Features</a></h2>
-<p>This template builds upon the frameworks and libraries mentioned above, so for details about their specific features, please consult their respective documentations.</p>
-<p>For example, for Foundry, you can refer to the <a href="https://book.getfoundry.sh/">Foundry Book</a>. You might be in particular interested in reading the <a href="https://book.getfoundry.sh/forge/writing-tests.html">Writing Tests</a> guide.</p>
-<h3 id="github-actions"><a class="header" href="#github-actions">GitHub Actions</a></h3>
-<p>This template comes with GitHub Actions pre-configured. Your contracts will be linted and tested on every push and pull
-request made to the <code>main</code> branch.</p>
-<p>You can edit the CI script in <a href="./.github/workflows/ci.yml">.github/workflows/ci.yml</a>.</p>
-<h3 id="conventional-commits"><a class="header" href="#conventional-commits">Conventional Commits</a></h3>
-<p>This template enforces the <a href="https://www.conventionalcommits.org/">Conventional Commits</a> standard for git commit messages.
-This is a lightweight convention that creates an explicit commit history, which makes it easier to write automated
-tools on top of.</p>
-<h3 id="sensible-defaults"><a class="header" href="#sensible-defaults">Sensible Defaults</a></h3>
-<p>This template comes with sensible default configurations in the following files:</p>
-<pre><code class="language-text">├── .gitignore
-├── foundry.toml
-└── remappings.txt
-└── slither.config.json
-</code></pre>
+<p>These contracts receive interactions from the front/backend and execute them.</p>
 <h2 id="usage"><a class="header" href="#usage">Usage</a></h2>
 <p>Here's a list of the most frequently needed commands.</p>
 <h3 id="build"><a class="header" href="#build">Build</a></h3>
@@ -262,15 +227,8 @@ tools on top of.</p>
 <pre><code>make tests
 </code></pre>
 <p>Alternatively, you can run specific tests as detailed in this <a href="https://book.getfoundry.sh/forge/tests">guide</a>.</p>
-<h3 id="security"><a class="header" href="#security">Security</a></h3>
-<p>This repository includes a Slither configuration, a popular static analysis tool from <a href="https://www.trailofbits.com/">Trail of Bits</a>. To use Slither, you'll first need to <a href="https://www.python.org/downloads/">install Python</a> and <a href="https://github.com/crytic/slither#how-to-install">install Slither</a>.</p>
-<p>Then, you can run:</p>
-<pre><code class="language-sh">make slither
-</code></pre>
-<p>And analyse the output of the tool.</p>
 <h1 id="about-us"><a class="header" href="#about-us">About Us</a></h1>
 <p><a href="https://threesigma.xyz/">Three Sigma</a> is a venture builder firm focused on blockchain engineering, research, and investment. Our mission is to advance the adoption of blockchain technology and contribute towards the healthy development of the Web3 space.</p>
-<p>If you are interested in joining our team, please contact us <a href="mailto:info@threesigma.xyz">here</a>.</p>
 <hr />
 <p align="center">
   <img src="https://threesigma.xyz/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fthree-sigma-labs-research-capital-white.0f8e8f50.png&w=2048&q=75" width="75%" />
