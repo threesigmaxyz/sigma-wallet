@@ -171,14 +171,14 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="sigma-wallet"><a class="header" href="#sigma-wallet">sigma-wallet</a></h1>
-<h2 id="descriptionm"><a class="header" href="#descriptionm">Descriptionm</a></h2>
+<h2 id="description"><a class="header" href="#description">Description</a></h2>
 <p>This repo implements the smart contracts for the sigma wallet project developed at ETHGlobalParis hackathob.
 The main contracts developed are:</p>
 <ul>
-<li>'ProviderManager.sol': contract that manages the different providers and its public keys, it allows for the addition of providers (like for example GoogleProvider) as an authentication method.</li>
-<li>'GoogleProvider.sol': 'IProvider.sol' implementation for Google OAuth, allowing the user to log-in with their Google account.</li>
-<li>'SigmaWallet.sol': Wallet contract, can only be accessed by the entrypoint, validates signatures and executes transactions</li>
-<li>'SigmaWalletFactory.sol': contract that handles the creation of new wallets in case the user does not have one</li>
+<li><code>ProviderManager.sol</code>: contract that manages the different providers and its public keys, it allows for the addition of providers (like for example GoogleProvider) as an authentication method.</li>
+<li><code>GoogleProvider.sol</code>: <code>IProvider.sol</code> implementation for Google OAuth, allowing the user to log-in with their Google account.</li>
+<li><code>SigmaWallet.sol</code>: Wallet contract, can only be accessed by the entrypoint, validates signatures and executes transactions</li>
+<li><code>SigmaWalletFactory.sol</code>: contract that handles the creation of new wallets in case the user does not have one</li>
 </ul>
 <p>These contracts receive interactions from the front/backend and execute them.</p>
 <h2 id="usage"><a class="header" href="#usage">Usage</a></h2>
