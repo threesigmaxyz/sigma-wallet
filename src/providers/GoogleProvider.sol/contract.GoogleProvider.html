@@ -171,32 +171,28 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="googleprovider"><a class="header" href="#googleprovider">GoogleProvider</a></h1>
-<p><a href="https://github.com/threesigmaxyz/sigma-wallet/blob/90e6adb7cb468b15742616d3b33fb09fa2bac24a/src/providers/GoogleProvider.sol">Git Source</a></p>
+<p><a href="https://github.com/threesigmaxyz/sigma-wallet/blob/3c26dd1be0a2d6c03414d03e0e8be3f56033f8ac/src/providers/GoogleProvider.sol">Git Source</a></p>
 <p><strong>Inherits:</strong>
-FunctionsClient, <a href="/src/verify/Verifier.sol/contract.Verifier.html">Verifier</a>, <a href="/src/providers/interfaces/IProvider.sol/interface.IProvider.html">IProvider</a></p>
+<a href="/src/verify/Verifier.sol/contract.Verifier.html">Verifier</a>, <a href="/src/providers/interfaces/IProvider.sol/interface.IProvider.html">IProvider</a></p>
 <h2 id="state-variables"><a class="header" href="#state-variables">State Variables</a></h2>
 <h3 id="_name"><a class="header" href="#_name">_name</a></h3>
 <pre><code class="language-solidity">string internal constant _name = &quot;Google&quot;;
 </code></pre>
-<h3 id="_publickeysurl"><a class="header" href="#_publickeysurl">_publicKeysUrl</a></h3>
-<pre><code class="language-solidity">string internal constant _publicKeysUrl =
-    &quot;https://www.googleapis.com/robot/v1/metadata/x509/securetoken@system.gserviceaccount.com&quot;;
+<h3 id="_functionsconsumer"><a class="header" href="#_functionsconsumer">_functionsConsumer</a></h3>
+<pre><code class="language-solidity">address internal immutable _functionsConsumer;
 </code></pre>
 <h3 id="_providermanager"><a class="header" href="#_providermanager">_providerManager</a></h3>
 <pre><code class="language-solidity">address internal immutable _providerManager;
 </code></pre>
-<h3 id="_oracle"><a class="header" href="#_oracle">_oracle</a></h3>
-<pre><code class="language-solidity">address internal immutable _oracle;
-</code></pre>
 <h3 id="_subscriptionid"><a class="header" href="#_subscriptionid">_subscriptionId</a></h3>
-<pre><code class="language-solidity">uint64 internal constant _subscriptionId = 3845;
+<pre><code class="language-solidity">uint64 internal immutable _subscriptionId;
 </code></pre>
 <h2 id="functions"><a class="header" href="#functions">Functions</a></h2>
 <h3 id="onlyprovidermanager"><a class="header" href="#onlyprovidermanager">onlyProviderManager</a></h3>
 <pre><code class="language-solidity">modifier onlyProviderManager();
 </code></pre>
 <h3 id="constructor"><a class="header" href="#constructor">constructor</a></h3>
-<pre><code class="language-solidity">constructor(address oracle_) FunctionsClient(oracle_);
+<pre><code class="language-solidity">constructor(address functionsConsumer_, uint64 subscriptionId_);
 </code></pre>
 <h3 id="verifytoken"><a class="header" href="#verifytoken">verifyToken</a></h3>
 <pre><code class="language-solidity">function verifyToken(string memory headerJson, string memory payloadJson, bytes memory signature, string memory subject)
@@ -206,13 +202,13 @@ FunctionsClient, <a href="/src/verify/Verifier.sol/contract.Verifier.html">Verif
     returns (bool);
 </code></pre>
 <h3 id="requestpublickeysupdate"><a class="header" href="#requestpublickeysupdate">requestPublicKeysUpdate</a></h3>
-<pre><code class="language-solidity">function requestPublicKeysUpdate(string calldata source, uint32 gasLimit) external returns (bytes32);
-</code></pre>
-<h3 id="fulfillrequest"><a class="header" href="#fulfillrequest">fulfillRequest</a></h3>
-<pre><code class="language-solidity">function fulfillRequest(bytes32 requestId, bytes memory response, bytes memory err) internal override;
+<pre><code class="language-solidity">function requestPublicKeysUpdate() external;
 </code></pre>
 <h3 id="name"><a class="header" href="#name">name</a></h3>
 <pre><code class="language-solidity">function name() external pure override returns (string memory);
+</code></pre>
+<h3 id="getoracle"><a class="header" href="#getoracle">getOracle</a></h3>
+<pre><code class="language-solidity">function getOracle() external view returns (address);
 </code></pre>
 <h3 id="addkeys"><a class="header" href="#addkeys">addKeys</a></h3>
 <pre><code class="language-solidity">function addKeys(bytes memory publicKeys_) external override;

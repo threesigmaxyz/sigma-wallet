@@ -211,7 +211,7 @@ The main contracts developed are:</p>
 <li><a href="src/dependencies/JsmnSolLib.sol/library.JsmnSolLib.html">JsmnSolLib</a></li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="jsmnsollib"><a class="header" href="#jsmnsollib">JsmnSolLib</a></h1>
-<p><a href="https://github.com/threesigmaxyz/sigma-wallet/blob/90e6adb7cb468b15742616d3b33fb09fa2bac24a/src/dependencies/JsmnSolLib.sol">Git Source</a></p>
+<p><a href="https://github.com/threesigmaxyz/sigma-wallet/blob/3c26dd1be0a2d6c03414d03e0e8be3f56033f8ac/src/dependencies/JsmnSolLib.sol">Git Source</a></p>
 <h2 id="state-variables"><a class="header" href="#state-variables">State Variables</a></h2>
 <h3 id="return_success"><a class="header" href="#return_success">RETURN_SUCCESS</a></h3>
 <pre><code class="language-solidity">uint256 constant RETURN_SUCCESS = 0;
@@ -306,7 +306,7 @@ The main contracts developed are:</p>
 <li><a href="src/providers/interfaces/IProviderManager.sol/interface.IProviderManager.html">IProviderManager</a></li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="iprovider"><a class="header" href="#iprovider">IProvider</a></h1>
-<p><a href="https://github.com/threesigmaxyz/sigma-wallet/blob/90e6adb7cb468b15742616d3b33fb09fa2bac24a/src/providers/interfaces/IProvider.sol">Git Source</a></p>
+<p><a href="https://github.com/threesigmaxyz/sigma-wallet/blob/3c26dd1be0a2d6c03414d03e0e8be3f56033f8ac/src/providers/interfaces/IProvider.sol">Git Source</a></p>
 <h2 id="functions-1"><a class="header" href="#functions-1">Functions</a></h2>
 <h3 id="verifytoken"><a class="header" href="#verifytoken">verifyToken</a></h3>
 <pre><code class="language-solidity">function verifyToken(string memory headerJson, string memory payloadJson, bytes memory signature, string memory subject)
@@ -315,7 +315,7 @@ The main contracts developed are:</p>
     returns (bool);
 </code></pre>
 <h3 id="requestpublickeysupdate"><a class="header" href="#requestpublickeysupdate">requestPublicKeysUpdate</a></h3>
-<pre><code class="language-solidity">function requestPublicKeysUpdate(string calldata source, uint32 gasLimit) external returns (bytes32);
+<pre><code class="language-solidity">function requestPublicKeysUpdate() external;
 </code></pre>
 <h3 id="name"><a class="header" href="#name">name</a></h3>
 <pre><code class="language-solidity">function name() external view returns (string memory);
@@ -344,7 +344,7 @@ The main contracts developed are:</p>
 }
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="iprovidermanager"><a class="header" href="#iprovidermanager">IProviderManager</a></h1>
-<p><a href="https://github.com/threesigmaxyz/sigma-wallet/blob/90e6adb7cb468b15742616d3b33fb09fa2bac24a/src/providers/interfaces/IProviderManager.sol">Git Source</a></p>
+<p><a href="https://github.com/threesigmaxyz/sigma-wallet/blob/3c26dd1be0a2d6c03414d03e0e8be3f56033f8ac/src/providers/interfaces/IProviderManager.sol">Git Source</a></p>
 <h2 id="functions-2"><a class="header" href="#functions-2">Functions</a></h2>
 <h3 id="verifytoken-1"><a class="header" href="#verifytoken-1">verifyToken</a></h3>
 <pre><code class="language-solidity">function verifyToken(
@@ -356,7 +356,7 @@ The main contracts developed are:</p>
 ) external view returns (bool);
 </code></pre>
 <h3 id="updateproviderpublickeys"><a class="header" href="#updateproviderpublickeys">updateProviderPublicKeys</a></h3>
-<pre><code class="language-solidity">function updateProviderPublicKeys(string memory providerName_, string calldata source, uint32 gasLimit) external;
+<pre><code class="language-solidity">function updateProviderPublicKeys(string memory providerName_) external;
 </code></pre>
 <h3 id="addprovider"><a class="header" href="#addprovider">addProvider</a></h3>
 <pre><code class="language-solidity">function addProvider(bytes memory providerBytecode_) external;
@@ -401,7 +401,7 @@ The main contracts developed are:</p>
 <li><a href="src/providers/oracles/ChainlinkOracle.sol/contract.ChainlinkOracle.html">ChainlinkOracle</a></li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="chainlinkoracle"><a class="header" href="#chainlinkoracle">ChainlinkOracle</a></h1>
-<p><a href="https://github.com/threesigmaxyz/sigma-wallet/blob/90e6adb7cb468b15742616d3b33fb09fa2bac24a/src/providers/oracles/ChainlinkOracle.sol">Git Source</a></p>
+<p><a href="https://github.com/threesigmaxyz/sigma-wallet/blob/3c26dd1be0a2d6c03414d03e0e8be3f56033f8ac/src/providers/oracles/ChainlinkOracle.sol">Git Source</a></p>
 <h2 id="functions-3"><a class="header" href="#functions-3">Functions</a></h2>
 <h3 id="constructor"><a class="header" href="#constructor">constructor</a></h3>
 <pre><code class="language-solidity">constructor();
@@ -413,32 +413,28 @@ The main contracts developed are:</p>
 <pre><code class="language-solidity">function getRegistry() external view returns (address);
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="googleprovider"><a class="header" href="#googleprovider">GoogleProvider</a></h1>
-<p><a href="https://github.com/threesigmaxyz/sigma-wallet/blob/90e6adb7cb468b15742616d3b33fb09fa2bac24a/src/providers/GoogleProvider.sol">Git Source</a></p>
+<p><a href="https://github.com/threesigmaxyz/sigma-wallet/blob/3c26dd1be0a2d6c03414d03e0e8be3f56033f8ac/src/providers/GoogleProvider.sol">Git Source</a></p>
 <p><strong>Inherits:</strong>
-FunctionsClient, <a href="src/providers/GoogleProvider.sol//src/verify/Verifier.sol/contract.Verifier.html">Verifier</a>, <a href="src/providers/GoogleProvider.sol//src/providers/interfaces/IProvider.sol/interface.IProvider.html">IProvider</a></p>
+<a href="src/providers/GoogleProvider.sol//src/verify/Verifier.sol/contract.Verifier.html">Verifier</a>, <a href="src/providers/GoogleProvider.sol//src/providers/interfaces/IProvider.sol/interface.IProvider.html">IProvider</a></p>
 <h2 id="state-variables-1"><a class="header" href="#state-variables-1">State Variables</a></h2>
 <h3 id="_name"><a class="header" href="#_name">_name</a></h3>
 <pre><code class="language-solidity">string internal constant _name = &quot;Google&quot;;
 </code></pre>
-<h3 id="_publickeysurl"><a class="header" href="#_publickeysurl">_publicKeysUrl</a></h3>
-<pre><code class="language-solidity">string internal constant _publicKeysUrl =
-    &quot;https://www.googleapis.com/robot/v1/metadata/x509/securetoken@system.gserviceaccount.com&quot;;
+<h3 id="_functionsconsumer"><a class="header" href="#_functionsconsumer">_functionsConsumer</a></h3>
+<pre><code class="language-solidity">address internal immutable _functionsConsumer;
 </code></pre>
 <h3 id="_providermanager"><a class="header" href="#_providermanager">_providerManager</a></h3>
 <pre><code class="language-solidity">address internal immutable _providerManager;
 </code></pre>
-<h3 id="_oracle"><a class="header" href="#_oracle">_oracle</a></h3>
-<pre><code class="language-solidity">address internal immutable _oracle;
-</code></pre>
 <h3 id="_subscriptionid"><a class="header" href="#_subscriptionid">_subscriptionId</a></h3>
-<pre><code class="language-solidity">uint64 internal constant _subscriptionId = 3845;
+<pre><code class="language-solidity">uint64 internal immutable _subscriptionId;
 </code></pre>
 <h2 id="functions-4"><a class="header" href="#functions-4">Functions</a></h2>
 <h3 id="onlyprovidermanager-1"><a class="header" href="#onlyprovidermanager-1">onlyProviderManager</a></h3>
 <pre><code class="language-solidity">modifier onlyProviderManager();
 </code></pre>
 <h3 id="constructor-1"><a class="header" href="#constructor-1">constructor</a></h3>
-<pre><code class="language-solidity">constructor(address oracle_) FunctionsClient(oracle_);
+<pre><code class="language-solidity">constructor(address functionsConsumer_, uint64 subscriptionId_);
 </code></pre>
 <h3 id="verifytoken-2"><a class="header" href="#verifytoken-2">verifyToken</a></h3>
 <pre><code class="language-solidity">function verifyToken(string memory headerJson, string memory payloadJson, bytes memory signature, string memory subject)
@@ -448,13 +444,13 @@ FunctionsClient, <a href="src/providers/GoogleProvider.sol//src/verify/Verifier.
     returns (bool);
 </code></pre>
 <h3 id="requestpublickeysupdate-1"><a class="header" href="#requestpublickeysupdate-1">requestPublicKeysUpdate</a></h3>
-<pre><code class="language-solidity">function requestPublicKeysUpdate(string calldata source, uint32 gasLimit) external returns (bytes32);
-</code></pre>
-<h3 id="fulfillrequest"><a class="header" href="#fulfillrequest">fulfillRequest</a></h3>
-<pre><code class="language-solidity">function fulfillRequest(bytes32 requestId, bytes memory response, bytes memory err) internal override;
+<pre><code class="language-solidity">function requestPublicKeysUpdate() external;
 </code></pre>
 <h3 id="name-1"><a class="header" href="#name-1">name</a></h3>
 <pre><code class="language-solidity">function name() external pure override returns (string memory);
+</code></pre>
+<h3 id="getoracle"><a class="header" href="#getoracle">getOracle</a></h3>
+<pre><code class="language-solidity">function getOracle() external view returns (address);
 </code></pre>
 <h3 id="addkeys-1"><a class="header" href="#addkeys-1">addKeys</a></h3>
 <pre><code class="language-solidity">function addKeys(bytes memory publicKeys_) external override;
@@ -467,7 +463,7 @@ FunctionsClient, <a href="src/providers/GoogleProvider.sol//src/verify/Verifier.
 <pre><code class="language-solidity">event DebugEvent();
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="providermanager"><a class="header" href="#providermanager">ProviderManager</a></h1>
-<p><a href="https://github.com/threesigmaxyz/sigma-wallet/blob/90e6adb7cb468b15742616d3b33fb09fa2bac24a/src/providers/ProviderManager.sol">Git Source</a></p>
+<p><a href="https://github.com/threesigmaxyz/sigma-wallet/blob/3c26dd1be0a2d6c03414d03e0e8be3f56033f8ac/src/providers/ProviderManager.sol">Git Source</a></p>
 <p><strong>Inherits:</strong>
 <a href="src/providers/ProviderManager.sol//src/providers/interfaces/IProviderManager.sol/interface.IProviderManager.html">IProviderManager</a></p>
 <h2 id="state-variables-2"><a class="header" href="#state-variables-2">State Variables</a></h2>
@@ -497,9 +493,7 @@ FunctionsClient, <a href="src/providers/GoogleProvider.sol//src/verify/Verifier.
 ) external view override returns (bool);
 </code></pre>
 <h3 id="updateproviderpublickeys-1"><a class="header" href="#updateproviderpublickeys-1">updateProviderPublicKeys</a></h3>
-<pre><code class="language-solidity">function updateProviderPublicKeys(string memory providerName_, string calldata source, uint32 gasLimit)
-    external
-    override;
+<pre><code class="language-solidity">function updateProviderPublicKeys(string memory providerName_) external override;
 </code></pre>
 <h3 id="addprovider-1"><a class="header" href="#addprovider-1">addProvider</a></h3>
 <pre><code class="language-solidity">function addProvider(bytes memory providerBytecode_) external override onlyGovernance;
@@ -528,7 +522,7 @@ FunctionsClient, <a href="src/providers/GoogleProvider.sol//src/verify/Verifier.
 <li><a href="src/verify/Verifier.sol/contract.Verifier.html">Verifier</a></li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="base64"><a class="header" href="#base64">Base64</a></h1>
-<p><a href="https://github.com/threesigmaxyz/sigma-wallet/blob/90e6adb7cb468b15742616d3b33fb09fa2bac24a/src/verify/Base64.sol">Git Source</a></p>
+<p><a href="https://github.com/threesigmaxyz/sigma-wallet/blob/3c26dd1be0a2d6c03414d03e0e8be3f56033f8ac/src/verify/Base64.sol">Git Source</a></p>
 <h2 id="state-variables-3"><a class="header" href="#state-variables-3">State Variables</a></h2>
 <h3 id="base64stdchars"><a class="header" href="#base64stdchars">base64stdchars</a></h3>
 <pre><code class="language-solidity">bytes private constant base64stdchars = &quot;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/&quot;;
@@ -547,7 +541,7 @@ FunctionsClient, <a href="src/providers/GoogleProvider.sol//src/verify/Verifier.
     returns (bytes1 b0, bytes1 b1, bytes1 b2, bytes1 b3);
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="jsmnsollib2"><a class="header" href="#jsmnsollib2">JsmnSolLib2</a></h1>
-<p><a href="https://github.com/threesigmaxyz/sigma-wallet/blob/90e6adb7cb468b15742616d3b33fb09fa2bac24a/src/verify/JsmnSolLib2.sol">Git Source</a></p>
+<p><a href="https://github.com/threesigmaxyz/sigma-wallet/blob/3c26dd1be0a2d6c03414d03e0e8be3f56033f8ac/src/verify/JsmnSolLib2.sol">Git Source</a></p>
 <h2 id="state-variables-4"><a class="header" href="#state-variables-4">State Variables</a></h2>
 <h3 id="return_success-1"><a class="header" href="#return_success-1">RETURN_SUCCESS</a></h3>
 <pre><code class="language-solidity">uint256 constant RETURN_SUCCESS = 0;
@@ -630,7 +624,7 @@ FunctionsClient, <a href="src/providers/GoogleProvider.sol//src/verify/Verifier.
 }
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="solrsaverify"><a class="header" href="#solrsaverify">SolRsaVerify</a></h1>
-<p><a href="https://github.com/threesigmaxyz/sigma-wallet/blob/90e6adb7cb468b15742616d3b33fb09fa2bac24a/src/verify/SolRsaVerify.sol">Git Source</a></p>
+<p><a href="https://github.com/threesigmaxyz/sigma-wallet/blob/3c26dd1be0a2d6c03414d03e0e8be3f56033f8ac/src/verify/SolRsaVerify.sol">Git Source</a></p>
 <h2 id="functions-8"><a class="header" href="#functions-8">Functions</a></h2>
 <h3 id="memcpy"><a class="header" href="#memcpy">memcpy</a></h3>
 <pre><code class="language-solidity">function memcpy(uint256 _dest, uint256 _src, uint256 _len) internal pure;
@@ -694,7 +688,7 @@ PS is padding filled with 0xff</p>
     returns (uint256);
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="stringutils"><a class="header" href="#stringutils">StringUtils</a></h1>
-<p><a href="https://github.com/threesigmaxyz/sigma-wallet/blob/90e6adb7cb468b15742616d3b33fb09fa2bac24a/src/verify/Strings.sol">Git Source</a></p>
+<p><a href="https://github.com/threesigmaxyz/sigma-wallet/blob/3c26dd1be0a2d6c03414d03e0e8be3f56033f8ac/src/verify/Strings.sol">Git Source</a></p>
 <h2 id="functions-9"><a class="header" href="#functions-9">Functions</a></h2>
 <h3 id="memcpy-1"><a class="header" href="#memcpy-1">memcpy</a></h3>
 <pre><code class="language-solidity">function memcpy(uint256 dest, uint256 src, uint256 len_) private pure;
@@ -800,7 +794,7 @@ PS is padding filled with 0xff</p>
 }
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="verifier"><a class="header" href="#verifier">Verifier</a></h1>
-<p><a href="https://github.com/threesigmaxyz/sigma-wallet/blob/90e6adb7cb468b15742616d3b33fb09fa2bac24a/src/verify/Verifier.sol">Git Source</a></p>
+<p><a href="https://github.com/threesigmaxyz/sigma-wallet/blob/3c26dd1be0a2d6c03414d03e0e8be3f56033f8ac/src/verify/Verifier.sol">Git Source</a></p>
 <h2 id="state-variables-5"><a class="header" href="#state-variables-5">State Variables</a></h2>
 <h3 id="keys"><a class="header" href="#keys">keys</a></h3>
 <pre><code class="language-solidity">mapping(string =&gt; bytes) keys;
@@ -837,7 +831,7 @@ PS is padding filled with 0xff</p>
 <pre><code class="language-solidity">event newKey(string indexed kid, bytes indexed modulus);
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="sigmawallet"><a class="header" href="#sigmawallet">SigmaWallet</a></h1>
-<p><a href="https://github.com/threesigmaxyz/sigma-wallet/blob/90e6adb7cb468b15742616d3b33fb09fa2bac24a/src/SigmaWallet.sol">Git Source</a></p>
+<p><a href="https://github.com/threesigmaxyz/sigma-wallet/blob/3c26dd1be0a2d6c03414d03e0e8be3f56033f8ac/src/SigmaWallet.sol">Git Source</a></p>
 <p><strong>Inherits:</strong>
 BaseAccount, TokenCallbackHandler, UUPSUpgradeable, Initializable</p>
 <p>minimal account.
@@ -935,7 +929,7 @@ the implementation by calling <code>upgradeTo()</code></em></p>
 <pre><code class="language-solidity">event LogString(string info);
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="sigmawalletfactory"><a class="header" href="#sigmawalletfactory">SigmaWalletFactory</a></h1>
-<p><a href="https://github.com/threesigmaxyz/sigma-wallet/blob/90e6adb7cb468b15742616d3b33fb09fa2bac24a/src/SigmaWalletFactory.sol">Git Source</a></p>
+<p><a href="https://github.com/threesigmaxyz/sigma-wallet/blob/3c26dd1be0a2d6c03414d03e0e8be3f56033f8ac/src/SigmaWalletFactory.sol">Git Source</a></p>
 <p>A sample factory contract for SimpleAccount
 A UserOperations &quot;initCode&quot; holds the address of the factory, and a method call (to createAccount, in this sample factory).
 The factory's createAccount returns the target account address even if it is already installed.
