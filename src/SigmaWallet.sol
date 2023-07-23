@@ -147,4 +147,13 @@ contract SigmaWallet is BaseAccount, TokenCallbackHandler, UUPSUpgradeable, Init
         (newImplementation);
         _requireFromEntryPoint();
     }
+
+    function _verifyToken(
+        string memory headerJson,
+        string memory payloadJson,
+        bytes memory signature,
+        string memory subject
+    ) internal view {
+        return;
+    }
 }
