@@ -22,7 +22,7 @@ contract Verifier {
         bytes memory signature,
         string memory subject
     ) internal view {
-        string memory headerBase64 = headerJson.encode();
+        /*string memory headerBase64 = headerJson.encode();
         string memory payloadBase64 = payloadJson.encode();
         StringUtils.slice[] memory slices = new StringUtils.slice[](2);
         slices[0] = headerBase64.toSlice();
@@ -41,7 +41,7 @@ contract Verifier {
 
         // Nonce not used for now
         //string memory senderBase64 = "0";
-        //require(senderBase64.strCompare(nonce) == 0, "Sender does not match nonce");
+        //require(senderBase64.strCompare(nonce) == 0, "Sender does not match nonce");*/
     }
 
     function _parseHeader(string memory json) internal pure returns (string memory kid) {
