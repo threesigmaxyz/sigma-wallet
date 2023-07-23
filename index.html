@@ -195,38 +195,10 @@ The main contracts developed are:</p>
 <p>Compile the contracts:</p>
 <pre><code class="language-sh">$ make build
 </code></pre>
-<h3 id="deploy"><a class="header" href="#deploy">Deploy</a></h3>
-<p>Prior to deployment you must configure the following variables in the <code>.env</code> file:</p>
-<ul>
-<li><code>MAINNET_RPC_URL/TESTNET_RPC_URL</code>: An RPC endpoint to connect to the blockchain.</li>
-<li><code>PRIVATE_KEY</code>: The private key for the deployer wallet.</li>
-<li><code>ETHERSCAN_API_KEY</code>: (Optional) An Etherscan API key for contract verification.</li>
-</ul>
-<p>Note that a fresh <code>ETHERSCAN_API_KEY</code> can take a few minutes to activate, you can query any <a href="https://api-rinkeby.etherscan.io/api?module=block&amp;action=getblockreward&amp;blockno=2165403&amp;apikey=ETHERSCAN_API_KEY">endpoint</a> to check its status.</p>
-<h4 id="local-deployment"><a class="header" href="#local-deployment">Local Deployment</a></h4>
-<p>By default, Foundry ships with a local Ethereum node <a href="https://github.com/foundry-rs/foundry/tree/master/anvil">Anvil</a> (akin to Ganache and Hardhat Network). This allows us to quickly deploy to our local network for testing.</p>
-<p>To start a local blockchain, with a determined private key, run:</p>
-<pre><code class="language-shthreesigmaxyz/foundry-template">make anvil
-</code></pre>
-<p>Afterwards, you can deploy to it via:</p>
-<pre><code class="language-sh">make deploy-anvil contract=&lt;CONTRACT_NAME&gt;
-</code></pre>
-<h4 id="testnet-deployment"><a class="header" href="#testnet-deployment">Testnet Deployment</a></h4>
-<p>In order to deploy the contracts to a testnet you must have configured the <code>TESTNET_RPC_URL</code> variable. Additionaly, if you need testnet ETH for the deployment you can request it from the following <a href="https://faucet.paradigm.xyz/">faucet</a>.</p>
-<p>To execute the deplyment run:</p>
-<pre><code class="language-sh">make deploy-testnet contract=&lt;CONTRACT_NAME&gt;
-</code></pre>
-<p>Forge is going to run our script and broadcast the transactions for us. This can take a little while, since Forge will also wait for the transaction receipts.</p>
-<h4 id="mainnet-deployment"><a class="header" href="#mainnet-deployment">Mainnet Deployment</a></h4>
-<p>A mainnet deployment has a similar flow to a testnet deployment with the distinction that it requires you to configure the <code>MAINNET_RPC_URL</code> variable.</p>
-<p>Afterwards, simply run:</p>
-<pre><code class="language-sh">make deploy-mainnet contract=&lt;CONTRACT_NAME&gt;
-</code></pre>
 <h3 id="test"><a class="header" href="#test">Test</a></h3>
 <p>To run all tests execute the following commad:</p>
 <pre><code>make tests
 </code></pre>
-<p>Alternatively, you can run specific tests as detailed in this <a href="https://book.getfoundry.sh/forge/tests">guide</a>.</p>
 <h1 id="about-us"><a class="header" href="#about-us">About Us</a></h1>
 <p><a href="https://threesigma.xyz/">Three Sigma</a> is a venture builder firm focused on blockchain engineering, research, and investment. Our mission is to advance the adoption of blockchain technology and contribute towards the healthy development of the Web3 space.</p>
 <hr />
