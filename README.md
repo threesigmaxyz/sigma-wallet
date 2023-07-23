@@ -38,54 +38,6 @@ Compile the contracts:
 $ make build
 ```
 
-### Deploy
-
-Prior to deployment you must configure the following variables in the `.env` file:
-
-- `MAINNET_RPC_URL/TESTNET_RPC_URL`: An RPC endpoint to connect to the blockchain.
-- `PRIVATE_KEY`: The private key for the deployer wallet.
-- `ETHERSCAN_API_KEY`: (Optional) An Etherscan API key for contract verification.
-
-Note that a fresh `ETHERSCAN_API_KEY` can take a few minutes to activate, you can query any [endpoint](https://api-rinkeby.etherscan.io/api?module=block&action=getblockreward&blockno=2165403&apikey=ETHERSCAN_API_KEY) to check its status.
-
-#### Local Deployment
-
-By default, Foundry ships with a local Ethereum node [Anvil](https://github.com/foundry-rs/foundry/tree/master/anvil) (akin to Ganache and Hardhat Network). This allows us to quickly deploy to our local network for testing.
-
-To start a local blockchain, with a determined private key, run:
-
-```shthreesigmaxyz/foundry-template
-make anvil
-```
-
-Afterwards, you can deploy to it via:
-
-```sh
-make deploy-anvil contract=<CONTRACT_NAME>
-```
-
-#### Testnet Deployment
-
-In order to deploy the contracts to a testnet you must have configured the `TESTNET_RPC_URL` variable. Additionaly, if you need testnet ETH for the deployment you can request it from the following [faucet](https://faucet.paradigm.xyz/).
-
-To execute the deplyment run:
-
-```sh
-make deploy-testnet contract=<CONTRACT_NAME>
-```
-
-Forge is going to run our script and broadcast the transactions for us. This can take a little while, since Forge will also wait for the transaction receipts.
-
-#### Mainnet Deployment
-
-A mainnet deployment has a similar flow to a testnet deployment with the distinction that it requires you to configure the `MAINNET_RPC_URL` variable.
-
-Afterwards, simply run:
-
-```sh
-make deploy-mainnet contract=<CONTRACT_NAME>
-```
-
 ### Test
 
 To run all tests execute the following commad:
@@ -94,7 +46,6 @@ To run all tests execute the following commad:
 make tests
 ```
 
-Alternatively, you can run specific tests as detailed in this [guide](https://book.getfoundry.sh/forge/tests).
 
 
 # About Us
