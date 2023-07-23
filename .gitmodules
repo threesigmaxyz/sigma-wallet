@@ -11,3 +11,7 @@
 	url = https://github.com/eth-infinitism/account-abstraction
 [submodule "lib/chainlink"]
 	path = lib/chainlink
+	url = https://github.com/smartcontractkit/chainlink
+[submodule "lib/functions-hardhat-starter-kit"]
+	path = lib/functions-hardhat-starter-kit
+	url = https://github.com/smartcontractkit/functions-hardhat-starter-kit
