@@ -25,6 +25,8 @@ contract SigmaWallet is BaseAccount, TokenCallbackHandler, UUPSUpgradeable, Init
 
     string public ownerId;
     IProviderManager internal immutable _providerManager;
+    uint96 internal _nonce;
+
 
     IEntryPoint private immutable _entryPoint;
 
@@ -85,6 +87,7 @@ contract SigmaWallet is BaseAccount, TokenCallbackHandler, UUPSUpgradeable, Init
         override
         returns (uint256 validationData)
     {
+        _nonce++;
         userOpHash; // silence warning
 
         emit LogString("Decoding signature");
@@ -110,6 +113,10 @@ contract SigmaWallet is BaseAccount, TokenCallbackHandler, UUPSUpgradeable, Init
                 revert(add(result, 32), mload(result))
             }
         }
+    }
+
+    function getNonce() public view virtual override returns (uint256) {
+        return _nonce;
     }
 
     /**
