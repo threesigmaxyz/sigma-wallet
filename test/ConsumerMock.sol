@@ -11,7 +11,8 @@ contract FunctionsConsumerMock {
         string[] calldata args,
         uint64 subscriptionId,
         uint32 gasLimit
-    ) public returns (bytes32) {
+    ) public pure returns (bytes32) {
+        // silence warnings
         source;
         secrets;
         args;

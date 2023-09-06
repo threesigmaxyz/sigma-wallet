@@ -44,7 +44,7 @@ contract SigmaWallet is BaseAccount, TokenCallbackHandler, UUPSUpgradeable, Init
     constructor(IEntryPoint anEntryPoint, IProviderManager providerManager_) {
         _entryPoint = anEntryPoint;
         _providerManager = providerManager_;
-        _disableInitializers();
+        //_disableInitializers(); not in current version of openzeppelin
     }
 
     /**
@@ -153,7 +153,12 @@ contract SigmaWallet is BaseAccount, TokenCallbackHandler, UUPSUpgradeable, Init
         string memory payloadJson,
         bytes memory signature,
         string memory subject
-    ) internal view {
+    ) internal pure {
+        // silence warnings
+        headerJson;
+        payloadJson;
+        signature;
+        subject;
         return;
     }
 }

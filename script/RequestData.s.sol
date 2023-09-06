@@ -32,7 +32,8 @@ contract RequestData is Script {
     }
 }
 
-/* Encoded Code
+
+    /* Encoded Code
     const API_ENDPOINT = 'https://www.googleapis.com/robot/v1/metadata/x509/securetoken@system.gserviceaccount.com'
     const requestParams = {
     url: `${API_ENDPOINT}`
@@ -50,5 +51,4 @@ contract RequestData is Script {
     const data = response.data
     const keys = Object.keys(data) 
     const json = JSON.stringify(keys)
-    return Functions.encodeString(`${json}`)
-/*
+    return Functions.encodeString(`${json}`) */
