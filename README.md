@@ -1,7 +1,7 @@
 # sigma-wallet
 
 ## Description
-This repo implements the smart contracts for the sigma wallet project developed at ETHGlobalParis hackathob.
+This repo implements the smart contracts for the sigma wallet project developed at ETHGlobalParis hackathon.
 The main contracts developed are:
 - `ProviderManager.sol`: contract that manages the different providers and its public keys, it allows for the addition of providers (like for example GoogleProvider) as an authentication method.
 - `GoogleProvider.sol`: `IProvider.sol` implementation for Google OAuth, allowing the user to log-in with their Google account.
